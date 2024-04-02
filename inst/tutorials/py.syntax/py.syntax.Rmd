@@ -13,7 +13,6 @@ runtime: shiny_prerendered
 
 ```{r setup, include=FALSE}
 library(tidyverse)
-library(machinelearning)
 library(learnr)
 library(reticulate)
 ```
