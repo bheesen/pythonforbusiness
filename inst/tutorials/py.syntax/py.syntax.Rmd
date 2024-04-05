@@ -15,6 +15,7 @@ runtime: shiny_prerendered
 library(tidyverse)
 library(learnr)
 library(reticulate)
+library(pythonforbusiness)
 ```
 
 ## Willkommen
@@ -28,45 +29,61 @@ Die R-Funktion py_config zeigt an, welche Version von Python durch das R-Paket r
 py_config()                 # Python Version, die von reticulate genutzt wird
 ```
 
-Auch in Python lässt sich der Pfad anzeigen, in dem Python installiert ist. Die Python-Systemvariable sys.executable aus dem Paket sys zeigt dies an. 
-
-```{python path, include = TRUE}
+```{python path, eval=FALSE, include=FALSE}
+#Auch in Python lässt sich der Pfad anzeigen, in dem Python installiert ist. Die Python-Systemvariable sys.executable aus #dem Paket sys zeigt dies an. 
 import sys
 print(sys.executable)       # Pfad zu den Python binary Dateien an
 ```
 
-Das Kapitel x.y im Buch beschreibt die Syntax von Python.
+Das Kapitel 5 im Buch beschreibt die Syntax von Python.
 
 ## 1. Wertzuweisung
 
 ### 1.1 Demo
 
-Wertzuweisungen erfolgen in Python mit Hilfe des Zuweisungsoperators =. Um einer Variablen x den Wert 3 zuzuweisen wäre daher die Anweisung x = 3 korrekt. Der Wert einer Variablen kann mit der print()-Funktion angezeigt werden.
+Wertzuweisungen erfolgen in Python mit Hilfe des Zuweisungsoperators =. Um einer Variablen x den Wert 3 zuzuweisen wäre daher die Anweisung x = 3 korrekt. Der Wert einer Variablen kann durch Angabe des Variablennamens oder mit der print()-Funktion angezeigt werden.
+Eine Liste von Werten kann mit eckigen Klammern erstellt werden, wobei die Elemente durch Komma getrennt sind, z.B. mitarbeiter = [mitarbeiterdeutschland, mitarbeiterholland]. Einzelne Elemente können über Index (das erste Element hat in Python den Index 0) angezeigt werden, z.B. mitarbeiter[1] zeigt das zweite Element der Liste mitarbeiter an.
+
+Sofern eine Anweisung länger ist kann diese auch mehrere Zeilen umfassen, wobei das letzte Zeichen (Zeilenverknüpfung) dann ein \ sein muss. Nach dem \ darf kein Zeichen, auch kein Leerzeichen mehr folgen. Das Zusammenfügen mehrerer Anweisungen in einer Zeile ist mit dem Semikolon möglich, z.B. a = 1; b = 3; c = 59.
+
+Um die Befehle in Skriptdateien zu kommentieren, können Kommentare durch ein vorangestelltes „#“  eingefügt werden. Alle in der entsprechen-den Zeile nachfolgenden Zeichen werden dann nicht als Python-Anweisung, sonder als Kommentar betrachtet.
 
 ```{python 1_1, exercise=FALSE}
-x = 3
-print(x) 
+#- Wertzuweisung und Kommentar-----------------------------------------------------
+mitarbeiterdeutschland = 3237    # Wertzuweisung
+mitarbeiterdeutschland           # Ausgabe der Variable
+print(mitarbeiterdeutschland)    # Ausgabe der Variable
+#- Funktion [] fügt Variablen zu einer Liste zusammen 
+mitarbeiterholland = 259         # Wertzuweisung
+mitarbeiter = [mitarbeiterdeutschland, mitarbeiterholland]
+mitarbeiter                      # Ausgabe der Liste
+mitarbeiter[0]                   # Erstes Element der Liste (Index beginnt mit 0)
+mitarbeiter[1]                   # Zweites Element der Liste
+#- Anweisung über mehr als eine Zeile----------------------------------------------
+mitarbeiterinsgesamt = mitarbeiterdeutschland \
+                     + mitarbeiterholland
+mitarbeiterinsgesamt
+#- Mehrere Anweisungen in einer Zeile----------------------------------------------
+a = 1; b = 3; c = 59
+print(a,b,c)
 ```
 
-Let's first import the `mpg` dataset from R. We can do so with `r.mpg`:
-
-```{python data, exercise = TRUE}
-df = r.mpg
-df
-df.info()
-df = df[df.hwy > 25]
-df
+```{python datavonR, eval=FALSE, exercise=F, include=F}
+# Import von Daten aus R durch voranstellen von "r." vor dem Objektnamen
+dfpython = r.mpg
+dfpython
+dfpython.info()
+dfpython = dfpython[dfpython.hwy > 25]
+dfpython
 autos = r.autos
 autos.info()
 ```
 
-Let's make a scatter plot for the filtered data `df` in R using `ggplot2`! 
-
-We need to first access the pandas DataFrame `df` from R using `py$df` before making the plot:
-
-```{r plot_py_data, exercise = TRUE, exercise.lines = 5}
-df <- py$df
-ggplot(data = df) +
+```{r plot_py_data, eval=FALSE, exercise=F, exercise.lines=3, include=F}
+# exercise.lines bestimmt die Größe des Codingfensters
+# Import von Daten aus Python Main Module durch voranstellen von "py." vor dem Objektnamen
+dfr <- py$dfpython
+ggplot(data = dfr) +
   geom_point(mapping = aes(x = displ, y = hwy))
 ```
 
@@ -76,115 +93,94 @@ Weisen Sie der Variablen x den Wert 3 zu und addieren Sie anschließend 18 hinzu
 
 Kommentare (nicht ausgeführtes Coding) wird in Python durch das #-Symbol eingeleitet.
 
-```{python 1_2, exercise=TRUE}
-x = 3                    # Wertzuweisung
-x = x + 18               # Addition
-print(x)                 # Ausgabe von x
+```{python 1_2, exercise=T, exercise.lines=3}
 ```
-
 <div id="1_2-hint">
 **Hint:** Tippen Sie "x = 3, x = x + 18" und anschließend "print(x)", um den Wert zuzuweisen und das Ergebnis angezeigt zu bekommen.
 </div>
 
 ### 1.3 Übung
 
-Erstellen Sie die Variable mit dem Namen "klausurnoten", welche sich aus x und y zusammensetzt.
-Lassen Sie sich anschließend die Variable "klausurnoten" anzeigen, die 3 und 1 anzeigen sollte.
+Die folgenden Anweisungen wurden ausgeführt, um eine List der Klausurnoten von Klaus, Peter und Nadine zu erstellen.
 
-```{python 1_3-setup, exercise=FALSE, echo=FALSE, include=FALSE}
-x <- 3
-y <- 1 
+```{python 1_3-setup, echo=TRUE, exercise=FALSE}
+Klaus  = 1
+Peter  = 4 
+Nadine = 3
+klausurnoten = [Klaus, Peter, Nadine]
 ```
 
+Lassen Sie sich das zweite und dritte Element der Liste "klausurnoten" anzeigen, so dass die 4 und 3 angezeigt werden sollten.
 
-```{python 1_3, exercise=TRUE, exercise.setup="1_3-setup"}
-klausurnoten <- ...
+```{python 1_3, exercise=TRUE, exercise.lines=3, exercise.setup="1_3-setup"}
+```
+```{python 1_3-hint-1}
+klausurnoten[1]
+klausurnoten[2]
+```
+## 2. Schleifen
 
+Schleifen haben den Vorteil, dass eine Reihe von Anweisungen mit Run Selected Line(s) im Menü bzw. der Tastenkombination Strg+Enter gemeinsam ausgeführt werden.
+
+```{python 2_1-setup, exercise=FALSE}
+Klaus  = 1
+Peter  = 4 
+Nadine = 3
+klausurnoten = [Klaus, Peter, Nadine]
+klausurnoten
+```
+```{python 2_1, exercise=F}
+#- For-Schleife---------------------------------------------------------------------
+for i in range(0, 3, 1): 
+   print(klausurnoten[i])  # Gibt Inhalt von mitarbeiter mit Index i aus
 ```
 
-<div id="1_3-hint">
-**Hint:** Tippen Sie "klausurnoten <- c(x,y)" und ergänzen Sie in der darauffolgenden Zeile die Anweisung "klausurnoten", um die Variable anzuzeigen.
-</div>
+## 3. Import von Paket
 
-## 2. Mehrzeiliger Code
+Funktionsaufrufe beziehen sich oft auf Funktionen, die in Paketen enthalten sind. Um ein Paket zu aktivieren wird die Anweisung import paketname verwendet. Um den Paketnamen nicht immer in voller Länge in Anweisungen angeben zu müssen, wird gerne mit Abkürzungen gearbeitet, die über den Parameter „as“ angegeben werden, z.B. import numpy as np. 
 
-Zeilen con Code sind in der Regel im Editor auf 80 Zeichen beschränkt. Wenn Code länger als 80 Zeichen ist, dann lässt sich dies mit Hilfe eines "\" am Ende der Zeile auf die nachfolgende Zeile erweitern. Für Parameter einer Funktion lassen sich Parameter durch Anführungszeichen so angeben, dass diese verbunden werden.
+Wenn nur einzelne Teilpakete, Funktionen, Klassen oder Daten aus einem Paket importiert werden sollen, ist dies mit der Anweisung "from paket import objekt" möglich. Dadurch wird kein unnötiger Platz im Arbeitsspeicher verschwendet. 
 
-```{python 2_1, exercise=TRUE}
-# Zeilenumbruch mit einem Backslash
-url1 = "http://www.prescient.pro/"\
-       "index.php/publications-books-articles"
-url1
-# Zeilenumbruch mit Rundklammern
-url2 = ("http://www.prescient.pro/"
-        "index.php/publications-books-articles")
-url2
-print(url1 == url2)
-```
+Um einen Überblick aller Objekte eines Pakets zu erhalten ist es möglich den Paketnamen gefolgt von dem Punktoperator und der Tab-Taste einzugeben.
 
-## 3. Codeblock
-
-Codeblöcke von Schleifen oder Funktionen werden mit geschweiften Klammern umschlossen.
-
-Führen Sie die for-Schleife aus, welche die ersten beiden Werte der Klausurnoten mit den Werten 3 und 1 ausgibt.
-
-```{python 3-setup, exercise=FALSE, echo=FALSE, include=FALSE}
-x <- 3
-y <- 1 
-klausurnoten <- c(x,y)
-```
-
-```{python 3, exercise=TRUE, exercise.setup="3-setup"}
-for (i in 1:2) {         # For-Schleife von 1 bis 2
-  print(klausurnoten[i]) # Gibt die Inhalte von klausurnoten mit Index i aus
-}
-
+```{python 3, exercise=F}
+#- Import von Paket----------------------------------------------------------------
+import numpy as np               # Paket numpy importieren
+from math import pi              # Objekt pi aus Paket math importieren
+pi
 ```
 
 ## 4. Funktionsaufruf
 
-R-Befehle bestehen aus Ausdrücken, also aus Wertzuweisungen (arithmetische oder logische Operatoren) oder Funktionsaufrufen. Funktionsaufrufe sind daran erkennbar, dass nach dem Namen der Funktion Klammern folgen, in denen einer Funktion ggfs. Parameter mitgegeben werden können, z.B. mean(klausurnoten), um den Mittelwert für die Variable „klausurnoten“ zu berechnen.
+Funktionsaufrufe sind daran erkennbar, dass nach dem Namen des Paketes, einem Punkt und dem Namen der Funktion Klammern folgen, in denen der Funktion ggfs. Parameter mitgegeben werden können, z.B. np.mean(mitarbeiter), um den Mittelwert für die Variable „mitarbeiter“ zu berechnen. 
+
+Python ist case-sensitiv, bei den Namen von Funktionen und Objekten wird also die Groß- und Kleinschreibung unterschieden, so dass np.mean(mitarbeiter) nur dann funktioniert, wenn es eine Funktion mean() in dem Paket numpy und auch ein Objekt mitarbeiter gibt, die beide keine Großbuchstaben beinhalten. Die Anweisung np.Mean(Mitarbeiter) würde eine Fehlermeldung verursachen wenn entweder die Funktion Mean() oder das Objekt Mitarbeiter nicht in dieser Kombination von Groß-/Kleinschreibung existieren.
+
+Die Hilfe zu einer Funktion lässt sich durch voranstellen eines Fragezeichens aufrufen, z.B. ?np.mean.
+
+```{python 4_1, exercise=F}
+#- Funktionsaufruf-----------------------------------------------------------------
+np.mean(mitarbeiter)             # Funktion np.mean() berechnet den Mittelwert
+```
 
 ### 4.1 Aufruf einer Funktion
 
-Rufen Sie die Funktion mean() auf und verwenden Sie als Parameter den Vektor klausurnoten. Als Ergebnis sollte 2 angezeigt werden.
+Rufen Sie die Funktion mean() auf und verwenden Sie als Parameter den Vektor klausurnoten. Als Ergebnis sollte 2,6 Periode angezeigt werden.
 
-```{python 4_1-setup, exercise=FALSE, echo=FALSE, include=FALSE}
-x <- 3
-y <- 1 
-klausurnoten <- c(x,y)
+```{python 4_2, exercise=TRUE, exercise.lines=3}
 ```
-
-```{python 4_1, exercise=TRUE, exercise.setup="4_1-setup"}
-
+```{python 4_2-hint-1}
+np.mean(klausurnoten)            # Funktion np.mean() berechnet den Mittelwert
 ```
-
-<div id="4_1-hint">
-**Hint:** Tippen Sie "mean(klausurnoten)" ein, um die Funktion mean() auszuführen.
-</div>
-
-### 4.2 Hilfe zu Funktion
-
-Die Hilfe zu einer Funktion in R kann über ein dem Funktionsnamen vorangestelltes Fragezeichen erfolgen, z.B. ?ggplot, um die Hilfe zu der Funktion ggplot angezeigt zu bekommen. In der Hilfe werden u.a. auch die Parameter einer Funktion vorgestellt.
-
-Lassen Sie sich die Hilfe zu der Funktion mean anzeigen. Dies kann in R-Studio oder in einem separaten Browser-Fenster angezeigt werden.
-
-```{python 4_2, exercise=TRUE}
-
-```
-
-<div id="4_2-hint">
-**Hint:** Tippen Sie "?mean" ein, um die Hilfe zu der Funktion mean() anzuzeigen.
-</div>
 
 ## 5. Quiz 
 
 ```{r 5, echo = FALSE}
 quiz(
   question("Welche der folgenden Aussagen sind korrekt?", allow_retry = TRUE, random_answer_order = TRUE,
-  answer("Wertzuweisungen erfolgen über den Zuweisungsoperator <-.", correct = TRUE, message = "Alternativ zu <- kann auch das = verwendet werden."),
+  answer("Wertzuweisungen erfolgen über den Zuweisungsoperator <-.", correct = FALSE, message = "Wertzuweisungen erfolgen durch ein =."),
+  answer("Listen werden in Python durch eckige Klammern [] erzeugt. Die Objekte der Liste werden in den eckigen Klammern durch Komma getrennt angegeben.", correct = TRUE),
   answer("Kommentare beginnen in R mit dem Anführungszeichen.", message = "Nein, das #-Zeichen stellt den Beginn eines Kommentars dar."),
-  answer("Codeblocks werden durch Klammern ( und ) eingeschlossen.", message = "Nein, Codeblocks werden in { und } eingeschlossen."),
   answer("Funktionsaufrufe erfolgen durch die Angabe des Funktionsnamens gefolgt von ( und ). In den Klammern werden ggfs. Parameter an die Funktion übergeben.", correct = TRUE, message = "Ja, in Klammern können einer Funktion beliebig viele Parameter beliebigen Formats übergeben werden."),
     type = "multiple"
   )
