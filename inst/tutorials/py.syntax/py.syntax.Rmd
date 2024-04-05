@@ -180,7 +180,7 @@ quiz(
   question("Welche der folgenden Aussagen sind korrekt?", allow_retry = TRUE, random_answer_order = TRUE,
   answer("Wertzuweisungen erfolgen über den Zuweisungsoperator <-.", correct = FALSE, message = "Wertzuweisungen erfolgen durch ein =."),
   answer("Listen werden in Python durch eckige Klammern [] erzeugt. Die Objekte der Liste werden in den eckigen Klammern durch Komma getrennt angegeben.", correct = TRUE),
-  answer("Kommentare beginnen in R mit dem Anführungszeichen.", message = "Nein, das #-Zeichen stellt den Beginn eines Kommentars dar."),
+  answer("Kommentare beginnen in Python mit dem Anführungszeichen.", message = "Nein, das #-Zeichen stellt den Beginn eines Kommentars dar."),
   answer("Funktionsaufrufe erfolgen durch die Angabe des Funktionsnamens gefolgt von ( und ). In den Klammern werden ggfs. Parameter an die Funktion übergeben.", correct = TRUE, message = "Ja, in Klammern können einer Funktion beliebig viele Parameter beliebigen Formats übergeben werden."),
     type = "multiple"
   )
