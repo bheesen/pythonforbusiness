@@ -56,7 +56,7 @@ if c > 10:
     print("Die Variable c ist größer als 10")
 ```
 
-### Übung Wertzuweisung
+### 1.1 Übung Wertzuweisung
 
 Weisen Sie der Variablen x den Wert 3 zu und addieren Sie anschließend 18 hinzu. Lassen Sie sich anschließend den Wert von x anzeigen.
 
@@ -79,7 +79,7 @@ Die Funktion isinstance() erlaubt zu prüfen, ob eine Variable von einem spezifi
 
 Wenn der Datentyp konvertiert werden soll, so ist dies mit den Funktionen float(), int(), str(), list(), tuple() und set() möglich. Die vorgenannten Funktionen können auch genutzt werden, um neue, leere Objekte zu erzeugen, z.B. a=list() erzeugt eine leere Liste mit dem Namen a. Nur für Dictionaries ist eine einfache Konvertierung nicht möglich, da ja die Angabe von Schlüssel und Werten erforderlich wäre. Aus einem Dictionary kann man jedoch eine Liste, ein Tupel oder eine Menge erzeugen, in der dann jedoch nur die Schlüssel enthalten sind.
 
-## 2.1 Numerische Datentypen
+### 2.1 Numerische Datentypen
 
 Die Ausgabe numerischer Variablen kann durch die Methode .format u.a. die Anzahl der Nachkommastellen festlegen, z.B. „Kosten von {:.3f} Euro und {:.4f} Euro".format(n1, 77.54321) erzeugt die Ausgabe 'Kosten von 10000.123 Euro und 77.5432 Euro', wenn n1 den Inhalt 10000.12345 hat.
 
@@ -104,7 +104,7 @@ print("n1:",n1,"n2:",n2,"n3:",n3,"n4:",n4)
 print("Kosten von {:.3f} Euro und {:.4f} Euro".format(n1, 77.54321))
 ```
 
-## 2.2 Logische Datentypen
+### 2.2 Logische Datentypen
 
 Logische Variablen können die Werte True oder False annehmen. Die Logikprüfung  l1=2>3 erzeugt für l1 den Wert False.
 
@@ -118,7 +118,7 @@ l3=n1>10
 print("n1>10 =",l3)
 ```
 
-## 2.3 String Datentypen
+### 2.3 String Datentypen
 
 Zeichenketten können in einfache oder doppelte Anführungszeichen gesetzt werden und besitzen in Python den Datentyp str. Wenn innerhalb einer Zeichenkette ein einfaches Hochkomma enthalten sein soll, so ist die Zeichenkette in doppelten Anführungszeichen einzuschließen. Wenn innerhalb einer Zeichenkette ein doppeltes Hochkomma enthalten sein soll, so ist die Zeichenkette in einfachen Anführungszeichen einzuschließen. Mehrzeilige Zeichenketten lassen sich in dreifachen Hochkomma einschließen. Zeichenketten mit einer Länge, die nicht in eine Editorzeile passen können mit Backslash (\) oder in Klammern aus mehreren Zeichenketten zusammengefügt werden. 
 
@@ -195,7 +195,7 @@ type(s13)                        # Datentyp
 type(z13)                        # Datentyp
 ```
 
-## 2.3.1 Methoden
+### 2.3.1 Methoden für Stringvariablen
 
 Mit den Operationen + bzw. =+ lassen sich Zeichenketten aneinanderfügen. Auch die Methode .join() erlaubt das Verketten von Zeichenketten. Die Methode .split() separiert die Worte einer Zeichenkette und erstellt eine Liste. Ein Suchen ist mit der Methode .find() und ein Suchen und Ersetzen mit der Methode .replace() möglich. 
 
@@ -224,7 +224,7 @@ sreplaced=sjoined2.replace("Dies","Das") # Suchen/Ersetzen von String
 sreplaced
 ```
 
-## 2.3.2 Zugriff
+### 2.3.2 Zugriff auf Stringvariablen
 
 Der Zugriff auf Teile einer Zeichenkette ist über Index in eckigen Klammern möglich, wobei der Index 0 für das erste Zeichen einer Zeichenkette verwendet wird, z.B. s1[0] für die Variable s1. Auch ein Intervall von Zeichen einer Zeichenkette lässt sich über einen Von-Index und Bis-Index angeben, wobei ein Doppelpunkt die beiden Indizes voneinander trennt, z.B. s1[0:4], um die Zeichen 1 bis 3 der Variablen s1 anzuzeigen. Bei der Angabe von Intervallgrenzen ist die untere Intervallgrenze inkludiert, die obere Intervallgrenze jedoch exkludiert.
 
@@ -243,7 +243,7 @@ s1[2::3]                         # jedes Zweite ab Index 2
 s1[::-1]                         # jedes Zeichen von hinten beginnend
 ```
 
-### Übung Zugriff auf Variable
+### 2.3.3 Übung Zugriff auf Variable
 
 Die folgenden Anweisungen wurden ausgeführt, um eine Liste der Klausurnoten von Klaus, Peter und Nadine zu erstellen.
 
