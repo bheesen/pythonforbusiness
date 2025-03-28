@@ -1,0 +1,343 @@
+---
+title: "Syntax"
+author: "Tutorial von [_Professor Bernd Heesen_](http://www.profheesen.de), dem Autor des Buches [_Künstliche Intelligenz for Business
+mit Python_](https://www.amazon.de/K%C3%BCnstliche-Intelligenz-Machine-Learning-mit/dp/3658415754)"
+date: "Version vom 28.03.2025"
+output: 
+  learnr::tutorial:
+    progressive: TRUE
+    allow_skip: TRUE
+    language: de
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(reticulate)
+library(pythonforbusiness)
+```
+
+## Willkommen
+
+Dieses Tutorial ergänzt die Inhalte des Buches [_Künstliche Intelligenz for Business
+mit Python_](https://www.amazon.de/K%C3%BCnstliche-Intelligenz-Machine-Learning-mit/dp/3658415754).
+
+Das Kapitel 5.6 im Buch beschreibt wesentliche Standardfunktionen von Python, welche die Basis für Machine Learning und Künstliche Intelligenz sind.
+
+## 1. Formatierte Zeichenkettenausgabe
+
+Die formatierte Ausgabe von Zeichenketten wird durch die Methode format(), z.B. "Es wurden {} Produkte verkauft".format(a), und die Funktion f-string unterstützt, z.B. f"Er sagte, dass sein Name {name} sei.".
+
+```{python 1, exercise=FALSE}
+## format()-Methode mit {} für Parameterplatzhalter-------------------------------
+#  Konvertierungsoptionen können dem Parameter mit ! folgen
+#    Ohne Konvertierungsangaber erfolgt Ausgabe als String
+#    !s -> String
+#    !r -> String in Anführungszeichen
+#  Formatierungsoptionen können dem Parameter mit : folgen
+a=54; b=22                                      # Variablen
+a;b                                             # Unformatierte Ausgabe
+"Es wurden {} Produkte verkauft".format(a)      # Formatierte Ausgabe
+"Es wurden {} Produkte verkauft, davon {} PCs".format(a,b)
+name="Andreas"
+f"Er sagte, dass sein Name {name} sei."
+f"Er sagte, dass sein Name {name!s} sei."
+f"Er sagte, dass sein Name {name!r} sei."
+## Ausrichtung und Textlänge
+"{:<25}".format("linksbündig")                  # linksbündig 
+"{:>25}".format("rechtsbündig")                 # rechtsbündig
+"{:^25}".format("zentriert")                    # zentriert
+"{:+^25}".format("zentriert")                   # '+' als Füllzeichen
+## Vorzeichen
+"{:+f}; {:+f}".format(1.23, -1.23)              # immer
+"{: f}; {: f}".format(1.23, -1.23)              # Leerzeichen anstatt "+"
+## Tausend-Separator
+"{:,}".format(1234.56789)                       # Tausend-Separator
+## Stringlänge und Ziffernanzahl
+"Ergebnis: {:10.7}".format(1234.56789)          # Stringlänge, Anzahl Ziffern
+f"Ergebnis: {12345.6789:{10}.{7}}"  # nested fields
+## Prozent und Nachkommastellen
+"Prozent {:.1%}".format(1234.56789)             # 1 Nachkommastelle
+"Prozent {:.2%}".format(1234.56789)             # 2 Nachkommastellen
+"Prozent {:.3%}".format(1234.56789)             # 3 Nachkommastellen
+## Datum--------------------------------------------------------------------------
+import datetime                                 # Paket datetime
+datum=datetime.datetime(2024, 9, 11, 11, 26, 58)
+"{:%Y-%m-%d %H:%M:%S}".format(datum)            # Datumsformat US
+"{:%d.%m.%Y %H:%M:%S}".format(datum)            # Datumsformat D
+"{:%B %d, %Y}".format(datum)                    # Monatsname
+"{:%d.%B %Y}".format(datum)
+f"{datum:%d.%B %Y}" 
+## Dictionary und Listen-Unpacking------------------------------------------------
+# Das Asterisk-Symbol (*, **) erlaubt das Unpacking von Listen und Dictionaries. 
+# Ein Stern wird bei Listen und zwei Sterne bei Dictionaries verwendet
+l1=["Zumba","Walzer","Foxtrott"]                # Liste
+"Tänze sind {}, {} und {}!".format(*l1)
+kunde_keys = ("Name","Telefonnummer","E-Mail")
+kunde_wert = ["Stefan Schmidt","0172-98654","s.schmidt@web.de"]
+kunde = dict(zip(kunde_keys, kunde_wert))       # Dictionary
+"Kunde: {Name}, Telefon: {Telefonnummer}, E-Mail: {E-Mail}".format(**kunde)
+# Funktion einbinden
+f"Die Liste besteht aus {len(l1)} Elementen."   # Funktionsaufruf
+```
+
+## 2. Reguläre Ausdrücke
+
+Reguläre Ausdrücke (Regular Expressions, Regex) werden benutzt, um Muster innerhalb einer Zeichenkette zu finden und weitere Operationen mit Textelementen zu unterstützen. Details zu Regulären Ausdrücken in Python finden sich in der Dokumentation.
+
+Beispiele von Funktionen aus dem Paket re sind die Funktion compile(), z.B. re.compile(r'(\d{3}-\d{3}-\d{4})')), um ein Muster zu definieren und die Funktion findall(), z.B. re.findall(r'[\w\.-]+@[\w\.-]+', text), um E-Mail-Adressen aus einem Text zu extrahieren.
+
+
+```{python 2, exercise=FALSE}
+## Regex: compile, search, findall, sub-------------------------------------------
+import re                                       # Paket re
+text = ["Ich studiere in Ansbach und meine Telefonnummer ist 770-919-7214.", 
+       "Die Telefonnummer der Hochschule ist 318-555-9292.",
+       "Sie erreichen uns via E-Mail unter: service@hs-ansbach.de oder a@my.de"]
+text = text[0]+text[1]+text[2]
+muster_tel = re.compile(r'(\d{3}-\d{3}-\d{4})') # compile -> Muster festlegen
+tel   = muster_tel.search(text)                 # search -> Suche erstes Muster
+tels  = muster_tel.findall(text)                # findall -> Suche nach Mustern
+emails= re.findall(r'[\w\.-]+@[\w\.-]+', text)
+print(tel)
+print(tel.group())
+print(tels)
+print(emails)
+text = "Hallo! Herr Schmidt besucht Herr Meier."  
+muster_herr = re.compile(r'Herr')
+print(muster_herr.sub('Frau', text))            # sub -> Ersetzen
+text_ohne = re.sub(r'[^\w\s]','',text)          # sub -> Satzzeichen entfernen
+text_ohne
+```
+
+## 3. Zufallszahlen
+
+Im Paket numpy sind Funktionen zum Erzeugen von Zufallszahlen enthalten, die mit folgender Anweisung verfügbar gemacht werden: from numpy.random import default_rng. Die Erzeugung von Zufallszahlen ist mit dem Zufallszahlengenerator default_rng() und dessen Funktionen random(), integers(), choice(), standard_normal(), normal(), lognormal() möglich. Darüber hinaus existieren zusätzliche Funktionen für weitere Verteilungen von Zufallszahlen. Eine Liste der in numpy verfügbaren Verteilungsfunktionen findet sich auf der Webseite des Pakets. 
+
+```{python 3, exercise=F}
+## Zufallszahl--------------------------------------------------------------------
+import numpy as np                        # Paket Numpy
+from numpy.random import default_rng      # Zufallszahlengenerator
+import matplotlib.pyplot as plt           # Visualisierung
+rng=np.random.default_rng()               # Zufallszahlengenerator
+rng                                       # Angabe zu Zufallszahlengenerator
+default_rng(12345).random()               # 1 Zahl Range [0, 1) Seed 12345
+default_rng(12345).random((3,3))          # 9 Zahlen Range [0, 1) Seed 12345
+default_rng(12345).integers(low=0,        # 3 Integer in Range [0, 10) Seed 12345  
+                   high=10,size=3)
+t1=[1,2,3,4,5,6]                          # Tupel mit Würfelzahlen
+default_rng(12345).choice(t1,10,True)     # 5x Würfeln     
+t2=["rot","rot","blau","blau","blau"]     # Tupel mit Kugeln in Schale
+default_rng(12345).choice(t2,10,True)     # 10x Ziehen mit Zurücklegen (True)    
+default_rng(12345).choice(t2,3,False)     # 3x Ziehen ohne Zurücklegen (False)   
+#  Verteilung der Zufallszahlen festlegen: Numpy Verteilungen 
+#  siehe https://numpy.org/doc/stable/reference/random/generator.html
+## Standardnormalverteilt---------------------------------------------------------
+mw,std=0,1                                # Mittelwert=3, Standardabweichung=1
+s=default_rng(12345).standard_normal(900) # 900 normalverteilte Zahlen Mw=0,Std=1
+count,bins,ignored=plt.hist(s,30,density=True)
+plt.plot(bins,1/(std*np.sqrt(2*np.pi))*np.exp(-(bins-mw)**2/(2*std**2)),
+         linewidth=2,color='r')
+plt.show()
+## Normalverteilt-----------------------------------------------------------------
+mw,std=3,1                                # Mittelwert=3, Standardabweichung=1
+n=default_rng(12345).normal(mw,std,900)   # 900 normalverteilte Zahlen Mw=3,Std=1
+count,bins,ignored=plt.hist(n,30,density=True)
+plt.plot(bins,1/(std*np.sqrt(2*np.pi))*np.exp(-(bins-mw)**2/(2*std**2)),
+         linewidth=2,color='r')
+plt.show()
+## Lognormalverteilt--------------------------------------------------------------
+l=default_rng(12345).lognormal(mw,std,900) # 900 lognormal Zahlen Mw=3,Std=1
+count,bins,ignored=plt.hist(l,100,density=True,align='mid')
+x=np.linspace(min(bins),max(bins),10000)
+pdf=(np.exp(-(np.log(x)-mw)**2/(2*std**2))
+       /(x*std*np.sqrt(2*np.pi)))
+plt.plot(x,pdf,linewidth=2,color='r')
+plt.axis('tight')
+plt.show()
+```
+
+## 4. Performancemessung
+
+Im Paket timeit sind Funktionen zur Ermittlung der Ausführungszeit einzelner Anweisungen enthalten, die mit der Funktion Timer() und Methode timeit() genutzt werden können. 
+
+```{python 4, exercise=F}
+## Performancemessung-------------------------------------------------------------
+from timeit import Timer                          # Paket timeit
+Timer('a=54','b=22;c=4').timeit()
+Timer('a=54;b=22;c=4').timeit()
+```
+
+## 5. Sprachverarbeitung
+
+Das Paket nltk unterstützt Funktionen des Natural Language Processings, u.a. das Entfernen von Stoppworten aus Texten, die Tokenization (Worte aus dem Text extrahieren), die Reduktion von Worten auf ihren Wortstamm (Stemming) und die Darstellung einer Häufigkeitsverteilung. Die Funktion stopwords() mit der Methode words() liefert eine Liste von Stoppworten je Sprache. Die Funktion word_tokenize() erstellt eine Liste der Worte eines Textes und die Funktion Porter-Stemmer() ermittelt zu Worten deren Wortstamm. Die Methode FreqDist() erstellt eine Häufigkeitsverteilung von Worten.
+
+Das Paket Spellchecker bietet darüber hinaus eine Rechtschreibprüfung mit der Methode correction() an und die Funktion WordCloud() aus dem Paket wordcloud erstellt Wortwolken. Um auch Texte, welche Emoticons enthalten, korrekt interpretieren zu können, sollten diese basierend auf ihrem Unicode in Text konvertiert werden. Eine Liste von Emoticons und deren Unicode ist in dem Paket emot enthalten.
+
+```{python 5, exercise=FALSE}
+## Sprachverarbeitung mit dem Paket NLTK------------------------------------------
+import nltk                                       # Paket nltk
+#nltk.download()                                  # nltk-Datasets laden
+# nltk-Daten installieren via Kommandozeile: python -m nltk.downloader all
+from nltk.corpus import stopwords
+## Stoppworte entfernen-----------------------------------------------------------
+stop_e = stopwords.words('english')
+stop_e[1:5]
+stop_d = stopwords.words("german")
+stop_d[1:5]
+text = ["Ich studieren in Ansbach und meine Telefonnummer ist 770-919-7214.", 
+       "Die Telefonnummer der Hochschule ist 318-555-9292.",
+       "Sie erreichen uns via E-Mail unter: service@hs-ansbach.de oder a@my.de"]
+import pandas as pd
+df = pd.DataFrame({'zeilen':text})
+print(df)
+df['zeilen'] = df['zeilen'].apply(lambda x: " ".join(x for x in x.split() 
+                  if x not in stop_d))
+print(df)
+## Abkürzungen durch Worte ersetzen (Standardisierung)----------------------------
+lookup_abk = {'nlp':'Natural Language Processing', 'aka':'auch bekannt als',
+              "asap" : "sobald wie möglich"}
+#  Eigene Funktion zur Standardisierung
+def text_standard(text):
+    worte = text.split()
+    neue_worte = []
+    for wort in worte:
+        wort = re.sub(r'[^\w\s]','',wort)
+        if wort.lower() in lookup_abk:
+            wort = lookup_abk[wort.lower()]
+            neue_worte.append(wort)
+            neuer_text = " ".join(neue_worte)
+        else:
+            neue_worte.append(wort)
+            neuer_text = " ".join(wort)
+    return neuer_text
+text_standard("ASAP hätte ich gerne das neueste Buch zu nlp")
+## Rechtschreibprüfung mit Paket SpellChecker: unknown, correction, candidates----
+#get_ipython().system('pip install pyspellchecker')
+from spellchecker import SpellChecker             # Paket pyspellchecker
+en = SpellChecker()                               # Englisch
+unbekannt = en.unknown(['something', 'is', 'hapenning', 'here'])
+for wort in unbekannt:
+    print(en.correction(wort))                    # "Beste" Empfehlung
+    print(en.candidates(wort))                    # Mögliche Korrekturoptionen
+de = SpellChecker(language='de')                  # Deutsch
+unbekannt = de.unknown(['etwas', 'pasirt', 'hierr'])
+for wort in unbekannt:
+    print(de.correction(wort))                    # "Beste" Empfehlung
+    print(de.candidates(wort))                    # Mögliche Korrekturoptionen
+def text_korrektur(text,sprache="de"):
+    spell = SpellChecker(language=sprache) # Sprache
+    worte = text.split()
+    unbekannt = spell.unknown(worte)
+    neue_worte = []
+    for wort in worte:
+        if wort in unbekannt:
+            wort = spell.correction(wort)
+            neue_worte.append(wort)
+            neuer_text = " ".join(neue_worte)
+        else:
+            neue_worte.append(wort)
+            neuer_text = " ".join(wort)
+    return neuer_text
+text="etwas pasirt hierr"  
+print(text)
+text=text_korrektur(text)
+print(text)
+## Tokenizing mit Paket nltk: word_tokenize---------------------------------------
+import nltk                                       # Paket nltk
+nltk.word_tokenize(text)
+## Wortstamm (Englisch) mit Paket nltk: PorterStemmer-----------------------------
+from nltk.stem import PorterStemmer               # Stemmer aus nltk
+st = PorterStemmer()
+text = ["I like fishing and eating fishes", 
+       "houses are plural, a single house is singular"]
+df = pd.DataFrame({'zeilen':text})
+print(df)
+df['zeilen'].apply(lambda x: " ".join([st.stem(word) for word in x.split()]))
+## Wortfrequenz und Wortwolke mit Paket nltk: FreqDist-----------------------------
+from nltk.corpus import webtext                   # Text-Dataset aus nltk
+from nltk.probability import FreqDist             # Häufigkeitsverteilung aus nltk
+from nltk.corpus import stopwords                 # Stopworte aus nltk
+import string                                     # Paket string
+wt_sentences = webtext.sents('firefox.txt')
+wt_words = webtext.words('firefox.txt')
+len(wt_sentences)                                 # Anzahl Sätze
+len(wt_words)                                     # Anzahl Worte
+häufigkeitsverteilung = nltk.FreqDist(wt_words)   # Häufigkeitsverteilung
+häufigkeitsverteilung[1:15]
+häufigkeitsverteilung_s =sorted(häufigkeitsverteilung,
+                                key=häufigkeitsverteilung.__getitem__, 
+                                reverse=True)
+häufigkeitsverteilung_s[1:15]
+lange_worte = dict([(k,v) for k,v in häufigkeitsverteilung.items() if len(k)>6])
+häufigkeitsverteilung = nltk.FreqDist(lange_worte)
+häufigkeitsverteilung.plot(30,cumulative=False)
+## Wortwolke mit Paket wordcloud: WordCloud---------------------------------------
+# get_ipython().system('pip install wordcloud')
+import matplotlib.pyplot as plt
+from wordcloud import WordCloud
+wortwolke = WordCloud().generate_from_frequencies(häufigkeitsverteilung)
+plt.imshow(wortwolke, interpolation='bilinear')
+plt.axis("off")
+plt.show()
+## Emojis durch Text ersetzen mit Paket emot: UNICODE_EMO-------------------------
+# get_ipython().system('pip install emot')
+import emot
+from emot.emo_unicode import UNICODE_EMOJI # , EMOTICONS
+def konvertiere_emoji(text):
+     for emot in UNICODE_EMOJI:
+         text = text.replace(emot, "_".join(UNICODE_EMOJI[emot].replace(",","").replace(":","").split()))
+     return text
+tweet="Some of the most popular emojis are 😂 ❤️ 😍 🤕 and for animals 🙈 🐶 🙊 🦓"
+tweet
+konvertiere_emoji(tweet)
+```
+
+## 6. Quiz 
+
+```{r 6, echo = FALSE}
+quiz(
+  question("Wie erzeugt man eine formatierte Zeichenkette?",
+    answer("Mit f-Strings", correct = TRUE),
+    answer("Mit + Operator", correct = FALSE)
+  ),
+  question("Welche Funktion gibt die Länge einer Liste zurück?",
+    answer("size()", correct = FALSE),
+    answer("len()", correct = TRUE)
+  ),
+  question("Wie kann man Zahlen mit Tausendertrennung formatieren?",
+    answer("Mit {value:,.2f}", correct = TRUE),
+    answer("Mit {value:2f,}", correct = FALSE)
+  ),
+  question("Welche Bibliothek wird für die Arbeit mit Datumsangaben genutzt?",
+    answer("datetime", correct = TRUE),
+    answer("time", correct = FALSE)
+  ),
+  question("Wie kann man die aktuelle Uhrzeit ausgeben?",
+    answer("datetime.time.today()", correct = FALSE),
+    answer("datetime.datetime.now()", correct = TRUE)
+  ),
+  question("Wie kann eine Zeichenkette linksbündig ausgerichtet werden?",
+    answer("Mit {:<20}", correct = TRUE),
+    answer("Mit {:>20}", correct = FALSE)
+  ),
+  question("Wie formatiert man eine Zahl als Prozentwert?",
+    answer("Mit {:.2p}", correct = FALSE),
+    answer("Mit {:.2%}", correct = TRUE)
+  ),
+  question("Wie gibt man einen String mit doppelten Anführungszeichen aus?",
+    answer("Mit !r in f-Strings", correct = TRUE),
+    answer("Mit !s in f-Strings", correct = FALSE)
+  ),
+  question("Wie gibt man das Datum '11. September 2024' in Python formatiert aus?",
+    answer("{datum:%B %d, %Y}", correct = FALSE),
+    answer("{datum:%d. %B %Y}", correct = TRUE)
+  )
+)
+```
+
+## Ende 
+
+Gratulation!
+
+Sie haben dieses Tutorial erfolgreich ausgeführt und einen Einblick in weitere bedeutende Funktionen der Programmiersprache Python erhalten.
