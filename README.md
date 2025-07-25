@@ -40,7 +40,7 @@ ml.tutorial(name = "py.standardfunktionen")
 
 This is an example using some of the functions included in the package:
 
-``` r
+``` python
 ## ml_summary(): Statistics of a variable-----------------------------------------
 summary = ml_summary(flug['dep_delay'], "Verspätung beim Abflug", "Minuten")
 ```
@@ -66,7 +66,7 @@ skewness.txt  : Rechte Schiefe: 4.80 > 0, positive Schiefe, linkssteil, rechtssc
 kurtosis      :     46.95
 kurtosis.txt  : Steilgipflig mit Exzess Kurtosis 46.95 > 0
 
-``` r
+``` python
 ## ml_plot: Visualization---------------------------------------------------------
 ml_plot(mtcars, column="Verbrauch100km", kind="box", title="Box-Plot: Verbrauch")
 ml_plot(mtcars_filtered, column=("Marke", "Verbrauch100km"),
