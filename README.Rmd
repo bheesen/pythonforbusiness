@@ -19,9 +19,10 @@ knitr::opts_chunk$set(
 <!-- badges: end -->
 
 The goal of the package pythonbusiness is to support the readers of the
-book “Künstliche Intelligenz for Business mit Python” with samples, functions and tutorials as described in the book.
+book “Künstliche Intelligenz für das Business: Anwendungsentwicklung mit Python” with samples, functions and tutorials as described in the book.
 
-The function ml.summary() automatically evaluates the main descriptive statistical figures for a variable and creates different forms of graphics for qualitative and quantitative variables.
+The function ml_summary() automatically evaluates the main descriptive statistical figures for a variable.
+The function ml_plot() creates different forms of visualizations.
 
 ## Installation
 
@@ -85,25 +86,6 @@ ml_plot(mtcars_filtered, column=("Marke", "Verbrauch100km"),
 ml_plot(df=autos, column=["Preis", "PS", "Alter", "Kilometer"], kind="cormatrix")        
 ```
 <img src="man/figures/box-1.png" width="100%" /><img src="man/figures/box-2.png" width="100%" />/><img src="man/figures/cor-1.png" width="100%" />
-
-    #>              [,1]   
-    #> anzahl       "34864"
-    #> anzahl.na    "0"    
-    #> modus        "golf" 
-    #> median       NA     
-    #> mean         NA     
-    #> min          NA     
-    #> max          NA     
-    #> sd           NA     
-    #> q1           NA     
-    #> q3           NA     
-    #> iqr          NA     
-    #> whisker.min  NA     
-    #> whisker.max  NA     
-    #> skewness     NA     
-    #> skewness.txt NA     
-    #> kurtosis     NA     
-    #> kurtosis.txt NA 
 
 The `README.Rmd` file was used to create this `README.md` file using the
 function `devtools::build_readme()`.

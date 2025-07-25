@@ -7,12 +7,10 @@
 <!-- badges: end -->
 
 The goal of the package pythonbusiness is to support the readers of the
-book “Künstliche Intelligenz for Business mit Python” with samples,
-functions and tutorials as described in the book.
+book “Künstliche Intelligenz für das Business: Anwendungsentwicklung mit Python” with samples, functions and tutorials as described in the book.
 
-The function ml.summary() automatically evaluates the main descriptive
-statistical figures for a variable and creates different forms of
-graphics for qualitative and quantitative variables.
+The function ml_summary() automatically evaluates the main descriptive statistical figures for a variable.
+The function ml_plot() creates different forms of visualizations.
 
 ## Installation
 
@@ -31,12 +29,11 @@ You can start the tutorials of the package with the following commands:
 
 ``` r
 ml.tutorial(name = "py.syntax")
-ml.tutorial(name = "ml.datentypen")
-ml.tutorial(name = "ml.datenstrukturen")
-ml.tutorial(name = "ml.operationen")
-ml.tutorial(name = "ml.importexport")
-ml.tutorial(name = "ml.transformation")
-ml.tutorial(name = "ml.visualisierung")
+ml.tutorial(name = "py.datenstrukturen")
+ml.tutorial(name = "py.operationen")
+ml.tutorial(name = "py.kontrollstrukturen")
+ml.tutorial(name = "py.funktionen")
+ml.tutorial(name = "py.standardfunktionen")
 ```
 
 ## Example
@@ -44,56 +41,41 @@ ml.tutorial(name = "ml.visualisierung")
 This is an example using some of the functions included in the package:
 
 ``` r
-ergebnis<-ml.summary(autos$PS,"Autos","PS",box=T)
-ergebnis
+## ml_summary(): Statistics of a variable-----------------------------------------
+summary = ml_summary(flug['dep_delay'], "Verspätung beim Abflug", "Minuten")
 ```
 
-<img src="man/figures/ps-1.png" width="100%" /><img src="man/figures/ps-2.png" width="100%" />
-
-    #>              [,1]
-    #> anzahl       "34864"                                                             
-    #> anzahl.na    "0"                                                                 
-    #> modus        "75"                                                                
-    #> median       "116"                                                               
-    #> mean         "128.48"                                                            
-    #> min          "29"                                                                
-    #> max          "500"                                                               
-    #> sd           "59.43"                                                             
-    #> q1           "86"                                                                
-    #> q3           "156"                                                               
-    #> iqr          "70"                                                                
-    #> whisker.min  "-19"                                                               
-    #> whisker.max  "261"                                                               
-    #> skewness     "1.47"                                                              
-    #> skewness.txt "Rechte Schiefe: 1.47 > 0, positive Schiefe,linkssteil,rechtsschief"
-    #> kurtosis     "3.7"                                                               
-    #> kurtosis.txt "Steilgipflig mit Exzess Kurtosis 3.7 > 0"
+## 
+## 📊 Summary für: Verspätung beim Abflug (Minuten)
+## typ           : numerisch
+## anzahl        : 336,788
+## anzahl.valid  : 328,521
+## anzahl.na     : 8,267
+## modus         :     -5.00
+## median        :     -2.00
+## mean          :     12.64
+## min           :    -43.00
+## max           :   1301.00
+## sd            :     40.21
+## q1            :     -5.00
+## q3            :     11.00
+## iqr           :     16.00
+## whisker.min   :    -29.00
+## whisker.max   :     35.00
+## skewness      :      4.80
+## skewness.txt  : Rechte Schiefe: 4.80 > 0, positive Schiefe, linkssteil, rechtsschief
+## kurtosis      :     46.95
+## kurtosis.txt  : Steilgipflig mit Exzess Kurtosis 46.95 > 0
 
 ``` r
-ergebnis<-ml.summary(autos$Modell,"Autos","Modell",bar=T,barminmax=20)
-ergebnis
+## ml_plot: Visualization---------------------------------------------------------
+ml_plot(mtcars, column="Verbrauch100km", kind="box", title="Box-Plot: Verbrauch")
+ml_plot(mtcars_filtered, column=("Marke", "Verbrauch100km"),
+        kind="box", legend=True, title="Box-Plot: Verbrauch nach Marke")
+ml_plot(df=autos, column=["Preis", "PS", "Alter", "Kilometer"], kind="cormatrix")      
 ```
 
-<img src="man/figures/modell-1.png" width="100%" /><img src="man/figures/modell-2.png" width="100%" />
-
-    #>              [,1]   
-    #> anzahl       "34864"
-    #> anzahl.na    "0"    
-    #> modus        "golf" 
-    #> median       NA     
-    #> mean         NA     
-    #> min          NA     
-    #> max          NA     
-    #> sd           NA     
-    #> q1           NA     
-    #> q3           NA     
-    #> iqr          NA     
-    #> whisker.min  NA     
-    #> whisker.max  NA     
-    #> skewness     NA     
-    #> skewness.txt NA     
-    #> kurtosis     NA     
-    #> kurtosis.txt NA 
+<img src="man/figures/box-1.png" width="100%" /><img src="man/figures/box-2.png" width="100%" />/><img src="man/figures/cor-1.png" width="100%" />
 
 The `README.Rmd` file was used to create this `README.md` file using the
 function `devtools::build_readme()`.
