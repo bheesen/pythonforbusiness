@@ -45,27 +45,26 @@ This is an example using some of the functions included in the package:
 summary = ml_summary(flug['dep_delay'], "Verspätung beim Abflug", "Minuten")
 ```
 
-## 
-## 📊 Summary für: Verspätung beim Abflug (Minuten)
-## typ           : numerisch
-## anzahl        : 336,788
-## anzahl.valid  : 328,521
-## anzahl.na     : 8,267
-## modus         :     -5.00
-## median        :     -2.00
-## mean          :     12.64
-## min           :    -43.00
-## max           :   1301.00
-## sd            :     40.21
-## q1            :     -5.00
-## q3            :     11.00
-## iqr           :     16.00
-## whisker.min   :    -29.00
-## whisker.max   :     35.00
-## skewness      :      4.80
-## skewness.txt  : Rechte Schiefe: 4.80 > 0, positive Schiefe, linkssteil, rechtsschief
-## kurtosis      :     46.95
-## kurtosis.txt  : Steilgipflig mit Exzess Kurtosis 46.95 > 0
+📊 Summary für: Verspätung beim Abflug (Minuten)
+typ           : numerisch
+anzahl        : 336,788
+anzahl.valid  : 328,521
+anzahl.na     : 8,267
+modus         :     -5.00
+median        :     -2.00
+mean          :     12.64
+min           :    -43.00
+max           :   1301.00
+sd            :     40.21
+q1            :     -5.00
+q3            :     11.00
+iqr           :     16.00
+whisker.min   :    -29.00
+whisker.max   :     35.00
+skewness      :      4.80
+skewness.txt  : Rechte Schiefe: 4.80 > 0, positive Schiefe, linkssteil, rechtsschief
+kurtosis      :     46.95
+kurtosis.txt  : Steilgipflig mit Exzess Kurtosis 46.95 > 0
 
 ``` r
 ## ml_plot: Visualization---------------------------------------------------------
