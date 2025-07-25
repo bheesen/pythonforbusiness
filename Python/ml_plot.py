@@ -206,8 +206,8 @@ def ml_plot(df, column, kpi=None, title="", kind="bar", legend=False, ax=None):
             order = grouped.index.tolist()
             # Palette entsprechend der sortierten Gruppen anpassen
             color_dict = dict(zip(order, palette[:len(order)]))  # sicherstellen, dass Länge passt
-            sns.boxplot(data=df, x=x, y=y, order=order, palette=color_dict,
-                        flierprops=flierprops, ax=ax)
+            sns.boxplot(data=df, x=x, y=y, hue=x, order=order, palette=color_dict,
+                        flierprops=flierprops, ax=ax, dodge=False)
             # Linie für Gesamtmedian aller Daten
             y_median_global = df[y].median()
             if y_median_global >= 100:
