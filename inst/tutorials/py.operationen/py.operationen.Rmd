@@ -1,8 +1,7 @@
 ---
 title: "Syntax"
-author: "Tutorial von [_Professor Bernd Heesen_](http://www.profheesen.de), dem Autor des Buches [_Künstliche Intelligenz for Business
-mit Python_](https://www.amazon.de/K%C3%BCnstliche-Intelligenz-Machine-Learning-mit/dp/3658415754)"
-date: "Version vom 27.03.2025"
+author: "Tutorial von [_Professor Bernd Heesen_](http://www.profheesen.de), dem Autor des Buches [_Künstliche Intelligenz im Business: Erstellung eigener Anwendungen mit Python_](https://www.amazon.de/K%C3%BCnstliche-Intelligenz-Business-Erstellung-Anwendungen/dp/3658495448)"
+date: "Version vom 16.08.2025"
 output: 
   learnr::tutorial:
     progressive: TRUE
@@ -19,8 +18,7 @@ library(pythonforbusiness)
 
 ## Willkommen
 
-Dieses Tutorial ergänzt die Inhalte des Buches [_Künstliche Intelligenz for Business
-mit Python_](https://www.amazon.de/K%C3%BCnstliche-Intelligenz-Machine-Learning-mit/dp/3658415754).
+Dieses Tutorial ergänzt die Inhalte des Buches [_Künstliche Intelligenz im Business: Erstellung eigener Anwendungen mit Python_](https://www.amazon.de/K%C3%BCnstliche-Intelligenz-Business-Erstellung-Anwendungen/dp/3658495448).
 
 Das Kapitel 5.3 im Buch beschreibt die Operationen in Python. Python unterstützt u.a. arithmetische, logische als auch statistische Operationen.
 
