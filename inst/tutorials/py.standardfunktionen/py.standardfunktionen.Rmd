@@ -1,8 +1,7 @@
 ---
 title: "Syntax"
-author: "Tutorial von [_Professor Bernd Heesen_](http://www.profheesen.de), dem Autor des Buches [_Künstliche Intelligenz for Business
-mit Python_](https://www.amazon.de/K%C3%BCnstliche-Intelligenz-Machine-Learning-mit/dp/3658415754)"
-date: "Version vom 28.03.2025"
+author: "Tutorial von [_Professor Bernd Heesen_](http://www.profheesen.de), dem Autor des Buches [_Künstliche Intelligenz im Business: Erstellung eigener Anwendungen mit Python_](https://www.amazon.de/K%C3%BCnstliche-Intelligenz-Business-Erstellung-Anwendungen/dp/3658495448)"
+date: "Version vom 16.08.2025"
 output: 
   learnr::tutorial:
     progressive: TRUE
@@ -19,8 +18,7 @@ library(pythonforbusiness)
 
 ## Willkommen
 
-Dieses Tutorial ergänzt die Inhalte des Buches [_Künstliche Intelligenz for Business
-mit Python_](https://www.amazon.de/K%C3%BCnstliche-Intelligenz-Machine-Learning-mit/dp/3658415754).
+Dieses Tutorial ergänzt die Inhalte des Buches [_Künstliche Intelligenz im Business: Erstellung eigener Anwendungen mit Python_](https://www.amazon.de/K%C3%BCnstliche-Intelligenz-Business-Erstellung-Anwendungen/dp/3658495448).
 
 Das Kapitel 5.6 im Buch beschreibt wesentliche Standardfunktionen von Python, welche die Basis für Machine Learning und Künstliche Intelligenz sind.
 
@@ -168,13 +166,13 @@ Timer('a=54','b=22;c=4').timeit()
 Timer('a=54;b=22;c=4').timeit()
 ```
 
+```{python 5, eval=FALSE, exercise=FALSE, include=FALSE}
 ## 5. Sprachverarbeitung
 
 Das Paket nltk unterstützt Funktionen des Natural Language Processings, u.a. das Entfernen von Stoppworten aus Texten, die Tokenization (Worte aus dem Text extrahieren), die Reduktion von Worten auf ihren Wortstamm (Stemming) und die Darstellung einer Häufigkeitsverteilung. Die Funktion stopwords() mit der Methode words() liefert eine Liste von Stoppworten je Sprache. Die Funktion word_tokenize() erstellt eine Liste der Worte eines Textes und die Funktion Porter-Stemmer() ermittelt zu Worten deren Wortstamm. Die Methode FreqDist() erstellt eine Häufigkeitsverteilung von Worten.
 
 Das Paket Spellchecker bietet darüber hinaus eine Rechtschreibprüfung mit der Methode correction() an und die Funktion WordCloud() aus dem Paket wordcloud erstellt Wortwolken. Um auch Texte, welche Emoticons enthalten, korrekt interpretieren zu können, sollten diese basierend auf ihrem Unicode in Text konvertiert werden. Eine Liste von Emoticons und deren Unicode ist in dem Paket emot enthalten.
 
-```{python 5, exercise=FALSE}
 ## Sprachverarbeitung mit dem Paket NLTK------------------------------------------
 import nltk                                       # Paket nltk
 #nltk.download()                                  # nltk-Datasets laden
