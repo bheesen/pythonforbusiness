@@ -84,7 +84,7 @@ for j in range(3):
 # Zentren
 fig.add_trace(go.Scatter(
     x=centers[:, 0], y=centers[:, 1],
-    mode='markers', marker=dict(symbol='x', size=16, color='black'),
+    mode='markers', marker=dict(symbol='x', size=16, color='red'),
     name='Zentren'
 ))
 
@@ -97,18 +97,8 @@ fig.update_layout(
 )
 
 # Achsen anpassen (direkt nach dem Layout)
-fig.update_xaxes(
-    showline=True, linewidth=1, linecolor="black",
-    gridcolor="lightgray", zerolinecolor="gray",
-    tickfont=dict(color="black"),  # Achsenwerte schwarz
-    titlefont=dict(color="black")  # Achsentitel schwarz
-)
-fig.update_yaxes(
-    showline=True, linewidth=1, linecolor="black",
-    gridcolor="lightgray", zerolinecolor="gray",
-    tickfont=dict(color="black"),
-    titlefont=dict(color="black")
-)
+fig.update_xaxes(showline=True, linewidth=1, linecolor="black", gridcolor="black")
+fig.update_yaxes(showline=True, linewidth=1, linecolor="black", gridcolor="black")
 
 st.plotly_chart(fig)
 
