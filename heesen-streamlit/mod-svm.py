@@ -24,7 +24,7 @@ from sklearn.metrics import confusion_matrix, accuracy_score, roc_auc_score, roc
 st.set_page_config(page_title="Support Vector Machines", layout="wide")
 st.title("Support Vector Machines (SVM)")
 st.markdown(
-    "Diese App illustriert die wesentlichen Prozessschritte von SVM: "
+    "Diese App illustriert die wesentlichen Prozessschritte von SVM. "
     "Sie wurde von [Prof. Heesen](http://www.profheesen.de) ergänzend zu dem Buch "
     "[Künstliche Intelligenz im Business](https://www.amazon.de/K%C3%BCnstliche-Intelligenz-Business-Erstellung-Anwendungen/dp/3658495448) erstellt."
 )

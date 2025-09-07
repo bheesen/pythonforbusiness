@@ -53,7 +53,6 @@ st.markdown(
 
 # ---------------- Sidebar: Daten & Modell ----------------
 
-
 with st.sidebar:
     st.header("Daten & Modell")
     ds_kind = st.selectbox("Datensatz", ["iris", "wine", "breast_cancer", "moons (2D)", "blobs (2D)"],
