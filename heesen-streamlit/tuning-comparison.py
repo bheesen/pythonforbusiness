@@ -39,11 +39,7 @@ try:
 except Exception:
     ml_summary = None
 
-try:
-    from ml_plot import ml_plot         # generische Plots
-except Exception:
-    ml_plot = None
-
+from ml_plot import ml_plot         # generische Plots
 
 # ---------------- Hinweis --------------------------------
 st.set_page_config(page_title="Tuning Hyperparameter", layout="wide")
@@ -256,19 +252,16 @@ with tab0:
     else:
         st.info("`ml_summary` nicht gefunden – Modul nicht geladen.")
 
-    if ml_plot is not None:
-        st.markdown("**Visualisierungen (ml_plot)**")
-        # Beispiel: Histogramm/Boxplot für die ersten zwei Features
-        for col in list(X_df.columns)[:2]:
-            try:
-                ax = ml_plot(X_df, col, kind="hist", title=f"Histogramm – {col}")
-                st.pyplot(ax.figure); plt.close(ax.figure)
-                ax = ml_plot(X_df, col, kind="box", title=f"Boxplot – {col}")
-                st.pyplot(ax.figure); plt.close(ax.figure)
-            except Exception:
-                st.write(f"Plot für {col} nicht verfügbar.")
-    else:
-        st.info("`ml_plot` nicht gefunden – Modul nicht geladen.")
+    st.markdown("**Visualisierungen (ml_plot)**")
+    # Beispiel: Histogramm/Boxplot für die ersten zwei Features
+    for col in list(X_df.columns)[:2]:
+        try:
+            ax = ml_plot(X_df, col, kind="hist", title=f"Histogramm – {col}")
+            st.pyplot(ax.figure); plt.close(ax.figure)
+            ax = ml_plot(X_df, col, kind="box", title=f"Boxplot – {col}")
+            st.pyplot(ax.figure); plt.close(ax.figure)
+        except Exception:
+            st.write(f"Plot für {col} nicht verfügbar.")
 
 # ===== RUN =====
 if run_btn:
