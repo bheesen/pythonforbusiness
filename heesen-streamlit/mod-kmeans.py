@@ -100,6 +100,19 @@ fig.update_layout(
 fig.update_xaxes(showline=True, linewidth=1, linecolor="black", gridcolor="black")
 fig.update_yaxes(showline=True, linewidth=1, linecolor="black", gridcolor="black")
 
+fig.update_xaxes(
+    showline=True, linewidth=1, linecolor="black",
+    gridcolor="lightgray", zerolinecolor="gray",
+    tickfont=dict(color="black"),  # Achsenwerte schwarz
+    titlefont=dict(color="black")  # Achsentitel schwarz
+)
+fig.update_yaxes(
+    showline=True, linewidth=1, linecolor="black",
+    gridcolor="lightgray", zerolinecolor="gray",
+    tickfont=dict(color="black"),
+    titlefont=dict(color="black")
+)
+
 st.plotly_chart(fig)
 
 # Anzeige der Anzahl der veränderten Zuweisungen
