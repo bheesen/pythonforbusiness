@@ -92,8 +92,8 @@ fig.update_layout(
     width=700, height=600,
     xaxis_title="Feature 1", yaxis_title="Feature 2",
     title=f"K-Means Iteration {iteration}",
-    plot_bgcolor="black",   # Hintergrund der Plotfläche
-    paper_bgcolor="white"   # Hintergrund um die Plotfläche herum
+    plot_bgcolor="grey",   # Hintergrund der Plotfläche
+    paper_bgcolor="black"   # Hintergrund um die Plotfläche herum
 )
 
 # Achsen anpassen (direkt nach dem Layout)
