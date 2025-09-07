@@ -24,7 +24,7 @@ with st.sidebar:
     # Streamlit UI
     st.header("Parameter")
 
-    n_extra = st.slider("Zusätzliche Datenpunkte", 0, 20, 0)
+    n_extra = st.slider("Zusätzliche Datenpunkte", 0, 6, 0)
     degree1 = st.slider("Polynomgrad Modell 1", 2, 10, 4)
     degree2 = st.slider("Polynomgrad Modell 2", 2, 20, 10)
 
