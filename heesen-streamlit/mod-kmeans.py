@@ -96,6 +96,10 @@ fig.update_layout(
     paper_bgcolor="white"   # Hintergrund um die Plotfläche herum
 )
 
+# Achsen anpassen (direkt nach dem Layout)
+fig.update_xaxes(showline=True, linewidth=1, linecolor="black", gridcolor="lightgray")
+fig.update_yaxes(showline=True, linewidth=1, linecolor="black", gridcolor="lightgray")
+
 st.plotly_chart(fig)
 
 # Anzeige der Anzahl der veränderten Zuweisungen
