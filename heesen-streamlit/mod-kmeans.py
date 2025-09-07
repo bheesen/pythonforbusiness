@@ -91,7 +91,9 @@ fig.add_trace(go.Scatter(
 fig.update_layout(
     width=700, height=600,
     xaxis_title="Feature 1", yaxis_title="Feature 2",
-    title=f"K-Means Iteration {iteration}"
+    title=f"K-Means Iteration {iteration}",
+    plot_bgcolor="white",   # Hintergrund der Plotfläche
+    paper_bgcolor="white"   # Hintergrund um die Plotfläche herum
 )
 
 st.plotly_chart(fig)
