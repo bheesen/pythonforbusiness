@@ -3,5 +3,5 @@ numpy
 pandas
 seaborn
 matplotlib
-scipy.stats
+scipy
 scikit-learn
