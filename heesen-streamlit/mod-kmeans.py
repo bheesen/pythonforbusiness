@@ -97,9 +97,6 @@ fig.update_layout(
 )
 
 # Achsen anpassen (direkt nach dem Layout)
-fig.update_xaxes(showline=True, linewidth=1, linecolor="black", gridcolor="black")
-fig.update_yaxes(showline=True, linewidth=1, linecolor="black", gridcolor="black")
-
 fig.update_xaxes(
     showline=True, linewidth=1, linecolor="black",
     gridcolor="lightgray", zerolinecolor="gray",
