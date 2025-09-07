@@ -33,7 +33,7 @@ st.markdown(
 with st.sidebar:
     st.header("Daten & Problem")
     ds_kind = st.selectbox("Datensatz", ["moons", "circles", "blobs", "linear", "Eigene (XOR)"], index=3, key="ds_kind") # Index 3 entspricht "linear"
-    n_samples = st.slider("Anzahl Samples", 30, 1000, 200, 10, key="n_samples")
+    n_samples = st.slider("Anzahl Samples", 30, 1000, 50, 10, key="n_samples")
     noise = st.slider("Rauschen", 0.0, 0.5, 0.2, 0.01, key="noise")
     stdize = st.checkbox("Standardisieren (z-Score)", True, key="stdize")
     seed = st.number_input("Seed", 0, 10000, 42, 1, key="seed")
