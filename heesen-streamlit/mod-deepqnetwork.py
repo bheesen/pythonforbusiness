@@ -24,16 +24,19 @@ st.markdown(
     "[Künstliche Intelligenz im Business](https://www.amazon.de/K%C3%BCnstliche-Intelligenz-Business-Erstellung-Anwendungen/dp/3658495448) erstellt."
 )
 
+# ---------------- Sidebar: Daten & Modell ----------------
+with st.sidebar:
+    st.header("Parameter")
+    EPISODES = st.sidebar.slider("Anzahl Episoden", 10, 500, 50, step=10)
+    GAMMA = st.sidebar.slider("Diskontfaktor (Gamma)", 0.80, 0.99, 0.95)
+    EPSILON_DECAY = st.sidebar.slider("Epsilon-Decay", 0.90, 0.999, 0.995)
+    LEARNING_RATE = st.sidebar.select_slider("Lernrate", options=[0.01, 0.005, 0.001, 0.0005], value=0.001)
+
 # Parameter
 MAX_STOCK = 20
 ACTIONS = [0, 1, 2, 3, 4, 5]
 STATE_SPACE = MAX_STOCK + 1
 ACTION_SPACE = len(ACTIONS)
-
-EPISODES = st.sidebar.slider("Anzahl Episoden", 100, 2000, 500, step=100)
-GAMMA = st.sidebar.slider("Diskontfaktor (Gamma)", 0.80, 0.99, 0.95)
-EPSILON_DECAY = st.sidebar.slider("Epsilon-Decay", 0.90, 0.999, 0.995)
-LEARNING_RATE = st.sidebar.select_slider("Lernrate", options=[0.01, 0.005, 0.001, 0.0005], value=0.001)
 
 # Environment
 def get_demand():
