@@ -28,15 +28,17 @@ except ImportError:
     XGB_AVAILABLE = False
 
 # ---- Eigene Module---------------------------------------
-import sys
-module_path = r"C:/Users/bernd/Documents/A-Python/EigeneModule"
+#import sys
+#module_path = r"C:/Users/bernd/Documents/A-Python/EigeneModule"
 # Modulpfad zu sys.path hinzufügen (für Imports von Modulen)
-if module_path not in sys.path:
-    sys.path.append(module_path)
+#if module_path not in sys.path:
+#    sys.path.append(module_path)
+
 try:
     from ml_summary import ml_summary  # liefert schöne Tabellen
 except Exception:
     ml_summary = None
+
 try:
     from ml_plot import ml_plot         # generische Plots
 except Exception:
@@ -47,7 +49,7 @@ except Exception:
 st.set_page_config(page_title="Tuning Hyperparameter", layout="wide")
 st.title("GridSearchCV vs RandomizedSearchCV")
 st.markdown(
-    "Diese App vergleicht **GridSearchCV** (Raster) und **RandomizedSearchCV** (Stichprobe) – *Suchraum, Budget, Metrik, Laufzeit, Stabilität*. \n"
+    "Diese App vergleicht **GridSearchCV** (Raster) und **RandomizedSearchCV** (Stichprobe) – *Suchraum, Budget, Metrik, Laufzeit, Stabilität*. "
     "Diese App wurde von [Prof. Heesen](http://www.profheesen.de) ergänzend zu dem Buch "
     "[Künstliche Intelligenz im Business](https://www.amazon.de/K%C3%BCnstliche-Intelligenz-Business-Erstellung-Anwendungen/dp/3658495448) erstellt."
 )
