@@ -41,11 +41,11 @@ library(pythonforbusiness)
 You can start the tutorials of the package with the following commands
 in R:
 
-ml.tutorial(name = "py.syntax")
-ml.tutorial(name = "py.datenstrukturen")
-ml.tutorial(name = "py.operationen")
-ml.tutorial(name = "py.kontrollstrukturen")
-ml.tutorial(name = "py.funktionen")
+ml.tutorial(name = "py.syntax"), 
+ml.tutorial(name = "py.datenstrukturen"), 
+ml.tutorial(name = "py.operationen"), 
+ml.tutorial(name = "py.kontrollstrukturen"), 
+ml.tutorial(name = "py.funktionen"), 
 ml.tutorial(name = "py.standardfunktionen")
 
 ## Example demo of the function ml_summary and ml_plot
