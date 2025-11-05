@@ -1,5 +1,5 @@
 ---
-title: "Syntax"
+title: "Kontrollstrukturen"
 author: "Tutorial von [_Professor Bernd Heesen_](http://www.profheesen.de), dem Autor des Buches [_Künstliche Intelligenz im Business: Erstellung eigener Anwendungen mit Python_](https://www.amazon.de/K%C3%BCnstliche-Intelligenz-Business-Erstellung-Anwendungen/dp/3658495448)"
 date: "Version vom 05.11.2025"
 output: 
