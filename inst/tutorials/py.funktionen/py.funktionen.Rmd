@@ -1,7 +1,7 @@
 ---
 title: "Funktionen"
 author: "Tutorial von [_Professor Bernd Heesen_](http://www.profheesen.de), dem Autor des Buches [_Künstliche Intelligenz im Business: Erstellung eigener Anwendungen mit Python_](https://www.amazon.de/K%C3%BCnstliche-Intelligenz-Business-Erstellung-Anwendungen/dp/3658495448)"
-date: "Version vom 05.11.2025"
+date: "Version vom 03.01.2026"
 output: 
   learnr::tutorial:
     progressive: TRUE
@@ -13,6 +13,9 @@ runtime: shiny_prerendered
 ```{r setup, include=FALSE}
 library(learnr)
 library(reticulate)
+if (!py_module_available("pandas")) {
+  py_install("pandas", pip = TRUE)
+}
 ```
 
 ## Willkommen
