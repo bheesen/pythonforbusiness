@@ -13,6 +13,9 @@ runtime: shiny_prerendered
 ```{r setup, include=FALSE}
 library(learnr)
 library(reticulate)
+if (!py_module_available("pandas")) {
+  py_install("pandas", pip = TRUE)
+}
 ```
 
 ## Willkommen
