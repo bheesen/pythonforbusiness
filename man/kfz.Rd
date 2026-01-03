@@ -3,7 +3,7 @@
 \docType{data}
 \name{kfz}
 \alias{kfz}
-\title{Alcohol consumption by country}
+\title{1000 used cars in the USA crawled 2016}
 \format{
 A data frame with 1000 rows and 6 variables:
 \describe{
@@ -19,6 +19,6 @@ A data frame with 1000 rows and 6 variables:
 kfz
 }
 \description{
-The dataset was created from data available at \url{https://www.prescient.pro/}.
+The dataset was created from data available at \url{https://www.profheesen.de/}.
 }
 \keyword{datasets}

@@ -17,6 +17,6 @@ A data frame with 36 rows and 4 variables:
 leipzig
 }
 \description{
-A list of words in a text with their sentiment value based on the Leipzig dictionary \url{https://www.prescient.pro/}.
+A list of words in a text with their sentiment value based on the Leipzig dictionary \url{https://www.profheesen.de/}.
 }
 \keyword{datasets}

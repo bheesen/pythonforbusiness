@@ -27,6 +27,9 @@ a vector with a list of descriptive statistics
 \description{
 Function to calculate descriptive statistics for a variable
 }
+\examples{
+ml.summary(autos$Modell,"Autos","Modell",bar=T,barminmax=20)
+}
 \keyword{descriptive,}
 \keyword{statistics,}
 \keyword{summary}

@@ -2,7 +2,7 @@
 % Please edit documentation in R/ml.eval.r
 \name{ml.eval}
 \alias{ml.eval}
-\title{Function to evaluate a machine learning model the correlation for numeric variables}
+\title{Function to evaluate a machine learning model (regression)}
 \usage{
 ml.eval(modell, daten, ziel.spalte)
 }
@@ -17,7 +17,10 @@ ml.eval(modell, daten, ziel.spalte)
 model name, dataframe name, rmse & rsq
 }
 \description{
-Function to evaluate a machine learning model the correlation for numeric variables
+Function to evaluate a machine learning model (regression)
+}
+\examples{
+ml.eval(wfl.rg.lm.fit,autos.train)
 }
 \keyword{evaluation}
 \keyword{learning,}

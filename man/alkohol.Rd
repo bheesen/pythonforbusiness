@@ -16,6 +16,6 @@ A data frame with 12 rows and 3 variables:
 alkohol
 }
 \description{
-The dataset was created from data available at \url{https://www.prescient.pro/}.
+The dataset was created from data available at \url{https://www.profheesen.de/}.
 }
 \keyword{datasets}

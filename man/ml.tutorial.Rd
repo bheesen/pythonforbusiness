@@ -2,7 +2,7 @@
 % Please edit documentation in R/ml.tutorial.R
 \name{ml.tutorial}
 \alias{ml.tutorial}
-\title{Function to start a tutorial accompanying the package "machinelearning" and the book "Künstliche Intelligenz und Machine Learning mit R".}
+\title{Function to start a tutorial accompanying the package "pythonforbusiness" and the book "Künstliche Intelligenz im Business".}
 \usage{
 ml.tutorial(name)
 }
@@ -10,6 +10,9 @@ ml.tutorial(name)
 \item{name}{is the name of the tutorial}
 }
 \description{
-Function to start a tutorial accompanying the package "machinelearning" and the book "Künstliche Intelligenz und Machine Learning mit R".
+Function to start a tutorial accompanying the package "pythonforbusiness" and the book "Künstliche Intelligenz im Business".
+}
+\examples{
+ ml.tutorial(name = "py.syntax")
 }
 \keyword{tutorial}

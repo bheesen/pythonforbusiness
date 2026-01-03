@@ -25,6 +25,6 @@ A data frame with 18 rows and 12 variables:
 bundesliga
 }
 \description{
-The dataset was created from data available at \url{https://www.prescient.pro/}.
+The dataset was created from data available at \url{https://www.profheesen.de/}.
 }
 \keyword{datasets}

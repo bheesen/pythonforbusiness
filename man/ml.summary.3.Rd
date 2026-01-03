@@ -47,6 +47,9 @@ text with feedback to the function
 \description{
 Function to calculate descriptive statistics for three variables
 }
+\examples{
+ml.summary.3(mpg[,c(3,1,11)],"Autos","Motorgröße in Liter","Marke","Fahrzeugtyp",box=T)
+}
 \keyword{correlation,}
 \keyword{descriptive,}
 \keyword{plot}

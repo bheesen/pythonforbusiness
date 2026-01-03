@@ -22,6 +22,6 @@ A data frame with 420 rows and 9 variables:
 formel1
 }
 \description{
-The dataset was created from data available at \url{https://www.prescient.pro/}.
+The dataset was created from data available at \url{https://www.profheesen.de/}.
 }
 \keyword{datasets}

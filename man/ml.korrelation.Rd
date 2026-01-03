@@ -19,6 +19,9 @@ text with feedback to the function
 \description{
 Function to calculate the correlation for numeric variables
 }
+\examples{
+ml.korrelation(mpg[,c(3,9,1)],"Autos",variablen3)
+}
 \keyword{correlation,}
 \keyword{descriptive,}
 \keyword{matrix}

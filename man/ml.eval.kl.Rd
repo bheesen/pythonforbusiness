@@ -2,7 +2,7 @@
 % Please edit documentation in R/ml.eval.kl.r
 \name{ml.eval.kl}
 \alias{ml.eval.kl}
-\title{Function to evaluate the quality of a prediction for categorical variables (classification)}
+\title{Function to evaluate the quality of a prediction for categorical variables creating a ROC curve (classification)}
 \usage{
 ml.eval.kl(df, titel = "", xvar = "", yvar = "", scatter = F)
 }
@@ -21,7 +21,10 @@ ml.eval.kl(df, titel = "", xvar = "", yvar = "", scatter = F)
 auc
 }
 \description{
-Function to evaluate the quality of a prediction for categorical variables (classification)
+Function to evaluate the quality of a prediction for categorical variables creating a ROC curve (classification)
+}
+\examples{
+ml.eval.kl(two_class_example,"Klassifikation Class1","truth","Class1",scatter=T)
 }
 \keyword{classification}
 \keyword{evaluation,}

@@ -17,6 +17,9 @@ a text with a message
 \description{
 Function to show the tuning parameters for a workflow or workflow set
 }
+\examples{
+ml.tunepar(wfl,wfl.name="Workflowname")
+}
 \keyword{learning}
 \keyword{machine}
 \keyword{parameter,}

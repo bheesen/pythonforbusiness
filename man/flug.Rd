@@ -43,6 +43,6 @@ A data frame with 336788 rows and 30 variables:
 flug
 }
 \description{
-The dataset was created from data available at \url{https://www.prescient.pro/}.
+The dataset was created from data available at \url{https://www.profheesen.de/}.
 }
 \keyword{datasets}

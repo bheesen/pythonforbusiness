@@ -2,7 +2,7 @@
 % Please edit documentation in R/ml.eval.wflset.r
 \name{ml.eval.wflset}
 \alias{ml.eval.wflset}
-\title{Function to evaluate a machine learning model the correlation for numeric variables}
+\title{Function to evaluate a machine learning Workflow set}
 \usage{
 ml.eval.wflset(modelle, daten)
 }
@@ -15,7 +15,10 @@ ml.eval.wflset(modelle, daten)
 performance indicators rmse & rsq
 }
 \description{
-Function to evaluate a machine learning model the correlation for numeric variables
+Function to evaluate a machine learning Workflow set
+}
+\examples{
+ml.eval.wflowset(mod.wflset.1,"autos.fold")
 }
 \keyword{evaluation}
 \keyword{learning,}

@@ -2,7 +2,7 @@
 % Please edit documentation in R/ml.eval.lr.r
 \name{ml.eval.lr}
 \alias{ml.eval.lr}
-\title{Function to evaluate the quality of a prediction for numeric variables (regression)}
+\title{Function to evaluate the quality of a prediction for numeric variables creating a scatter plot (regression)}
 \usage{
 ml.eval.lr(df, titel = "", xvar = "", yvar = "", scatter = F)
 }
@@ -21,7 +21,10 @@ ml.eval.lr(df, titel = "", xvar = "", yvar = "", scatter = F)
 rmse & rsq
 }
 \description{
-Function to evaluate the quality of a prediction for numeric variables (regression)
+Function to evaluate the quality of a prediction for numeric variables creating a scatter plot (regression)
+}
+\examples{
+ml.eval.lr(autos.eval[,c("Preis","Vorhersage")],"Gebrauchtwagen","realer Preis","vorhergesagter Preis",scatter=T)
 }
 \keyword{evaluation,}
 \keyword{learning,}
