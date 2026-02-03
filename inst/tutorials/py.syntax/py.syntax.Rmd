@@ -203,9 +203,9 @@ s1+=" für heute"                 # Operation += fügt Strings zusammen
 s1
 #  Eine Zahl muss vor += mit \"str()\" in einen String konvertiert werden
 s1print=s1
-print(n4)
+print(n3)
 #s1print+="ist die Zahl "+n4     # Fehlermeldung, da eine Zahl
-s1print+="ist die Zahl "+str(n4) # Keine Fehlermeldung, da String
+s1print+="ist die Zahl "+str(n3) # Keine Fehlermeldung, da String
 print(s1print)
 sliste = s1.split()              # Worttrennung von String
 sliste
