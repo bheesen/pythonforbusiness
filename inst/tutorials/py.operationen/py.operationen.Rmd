@@ -1,7 +1,7 @@
 ---
 title: "Operationen"
 author: "Tutorial von [_Professor Bernd Heesen_](http://www.profheesen.de), dem Autor des Buches [_Künstliche Intelligenz im Business: Erstellung eigener Anwendungen mit Python_](https://www.amazon.de/K%C3%BCnstliche-Intelligenz-Business-Erstellung-Anwendungen/dp/3658495448)"
-date: "Version vom 03.01.2026"
+date: "Version vom 03.02.2026"
 output: 
   learnr::tutorial:
     progressive: TRUE
@@ -150,15 +150,15 @@ b is d                                # id der Variablen ungleich ->False
 c is d                                # id der Variablen ungleich ->True
 #- Logische Operationen auf Listen------------------------------------------------
 l1=[9,3,3,4,1,7]
-if l1:                                # l1 prüft, ob Objekt l1 existiert
- print("Liste l1 existiert!")
+if l1:                                # l1 prüft, ob Objekt l1 nicht leer ist
+ print("Liste l1 ist nicht leer!")
 else:
- print("Liste l1 existiert nicht!")
-if l1 and 9 in l1:                    # and = logisches UND
- print("Zahl 9 in der Liste!")
+ print("Liste l1 ist leer!")
+if 3 in l1 and 9 in l1:               # and = logisches UND
+ print("Zahl 3 und 9 in der Liste!")
 else:
- print("Keine Zahl 9 in Liste enthalten.")
-if l1 and not 5 in l1:                # not = Verneinung
+ print("In der Liste sind nicht beide Zahlen 3 und 9 enthalten.")
+if 5 not in l1:                       # not = Verneinung
  print("Keine Zahl 5 in der Liste!")
 else:
  print("Zahl 5 in Liste enthalten.")
