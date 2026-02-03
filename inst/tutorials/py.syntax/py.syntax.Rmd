@@ -1,7 +1,7 @@
 ---
 title: "Syntax"
 author: "Tutorial von [_Professor Bernd Heesen_](http://www.profheesen.de), dem Autor des Buches [_Künstliche Intelligenz im Business: Erstellung eigener Anwendungen mit Python_](https://www.amazon.de/K%C3%BCnstliche-Intelligenz-Business-Erstellung-Anwendungen/dp/3658495448)"
-date: "Version vom 05.11.2025"
+date: "Version vom 03.02.2026"
 output: 
   learnr::tutorial:
     progressive: TRUE
@@ -69,7 +69,7 @@ Kommentare (nicht ausgeführtes Coding) wird in Python durch das #-Symbol eingel
 
 In vielen Programmiersprachen muss eine Variable durch die Zuweisung eines Namens und eines spezifischen Datentyps deklariert werden, bevor ihr ein Wert zugewiesen werden kann. In Python müssen Variablen nicht im Vorfeld deklariert werden, sondern sie werden in dem Augenblick der Wertzuweisung dynamisch erschaffen und Python bestimmt den Datentyp automatisch, sofern dieser nicht spezifisch angegeben wird. Bei Stringvariablen erfolgt die Zuweisung in Anführungszeichen, bei Zahlen ohne Anführungszeichen.
 
-Die wichtigsten elementaren Datentypen in Python sind: **Float (float)** sind Gleitkommazahlen, wobei das Dezimalkomma in Python standardmäßig durch einen Punkt ein- und ausgegeben wird.**Complex (complex)** sind Zahlen, die aus der Mantisse m und dem Exponenten e mit x=m*10e bestehen. **Integer (int)** sind ganzzahlige Zahlenwerte und verbrauchen weniger Speicherplatz als der Typ Float oder Complex.	**Boolean (bool)** sind logische Werte, welche True oder False sein können.	**String (str)** sind Zeichenketten bzw. Strings und werden entweder in einfache ' ' oder doppelte " " Anführungszeichen gesetzt.
+Die wichtigsten elementaren Datentypen in Python sind: **Float (float)** sind Gleitkommazahlen, wobei das Dezimalkomma in Python standardmäßig durch einen Punkt ein- und ausgegeben wird. **Integer (int)** sind ganzzahlige Zahlenwerte und verbrauchen weniger Speicherplatz als der Typ Float.	**Boolean (bool)** sind logische Werte, welche True oder False sein können.	**String (str)** sind Zeichenketten bzw. Strings und werden entweder in einfache ' ' oder doppelte " " Anführungszeichen gesetzt.
 
 Nachdem eine Wertzuweisung an eine Variable erfolgt ist, kann die Funktion type() genutzt werden, um den von Python automatisch zugewiesenen Datentyp anzeigen zu lassen. 
 Die Funktion isinstance() erlaubt zu prüfen, ob eine Variable von einem spezifischen Datentyp ist, z.B. isinstance(a,int) überprüft, ob die Variable a vom Typ integer ist. Das Ergebnis dieser Funktionen ist TRUE, wenn die Variable von diesem Datentyp ist, ansonsten FALSE.
@@ -89,11 +89,11 @@ isinstance(n1,int)               # Prüfung, ob Variable vom Typ Integer ist
 n2=int(n1)                       # Konvertierung zu Integer
 n2                               # Variableninhalt
 isinstance(n2,int)               # Prüfung, ob Variable vom Typ Integer ist
-n3=complex(n1)                   # Konvertierung zu Complex
+n3=round(n1,2)                   # Runden auf 2 Nachkommastellen
 n3                               # Variableninhalt
-n4=round(n1,2)                   # Runden auf 2 Nachkommastellen
-n4                               # Variableninhalt
-print("n1:",n1,"n2:",n2,"n3:",n3,"n4:",n4)
+n1,n2,n3
+print(n1,n2,n3)
+print("n1:",n1,"n2:",n2,"n3:",n3)
 #  Formatierung von Zahlen für die Ausgabe mit .format 
 #    {} für Variablen, die sich in Klammer nach .format befinden
 #    :.xf für x Nachkommastellen
