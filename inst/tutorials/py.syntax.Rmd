@@ -1,0 +1,395 @@
+---
+title: "Syntax"
+author: "Tutorial von [_Professor Bernd Heesen_](http://www.profheesen.de), dem Autor des Buches [_Künstliche Intelligenz im Business: Erstellung eigener Anwendungen mit Python_](https://www.amazon.de/K%C3%BCnstliche-Intelligenz-Business-Erstellung-Anwendungen/dp/3658495448)"
+date: "Version vom 03.02.2026"
+output: 
+  learnr::tutorial:
+    progressive: TRUE
+    allow_skip: TRUE
+    language: de
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(reticulate)
+```
+
+## Willkommen
+
+Dieses Tutorial ergänzt die Inhalte des Buches [_Künstliche Intelligenz im Business: Erstellung eigener Anwendungen mit Python_](https://www.amazon.de/K%C3%BCnstliche-Intelligenz-Business-Erstellung-Anwendungen/dp/3658495448).
+
+Das Kapitel 5.1 im Buch beschreibt die grundlegende Syntax und elementare Datentypen von Python.
+
+## 1. Wertzuweisung
+
+Wertzuweisungen erfolgen in Python mit Hilfe des Zuweisungsoperators =. Um einer Variablen x den Wert 3 zuzuweisen wäre daher die Anweisung x = 3 korrekt. Der Wert einer Variablen kann durch Angabe des Variablennamens oder mit der print()-Funktion angezeigt werden.
+Eine Liste von Werten kann mit eckigen Klammern erstellt werden, wobei die Elemente durch Komma getrennt sind, z.B. mitarbeiter = [mitarbeiterdeutschland, mitarbeiterholland]. Einzelne Elemente können über Index (das erste Element hat in Python den Index 0) angezeigt werden, z.B. mitarbeiter[1] zeigt das zweite Element der Liste mitarbeiter an.
+
+Sofern eine Anweisung länger ist kann diese auch mehrere Zeilen umfassen, wobei das letzte Zeichen (Zeilenverknüpfung) dann ein Backslash sein muss. Nach dem Backslash darf kein Zeichen, auch kein Leerzeichen mehr folgen. Das Zusammenfügen mehrerer Anweisungen in einer Zeile ist mit dem Semikolon möglich, z.B. a = 1; b = 3; c = 59.
+
+Um die Befehle in Skriptdateien zu kommentieren, können Kommentare durch ein vorangestelltes „#“  eingefügt werden. Alle in der entsprechenden Zeile nachfolgenden Zeichen werden dann nicht als Python-Anweisung, sonder als Kommentar betrachtet.
+
+```{python 1_1, exercise=FALSE}
+#- Wertzuweisung und Kommentar-----------------------------------------------------
+mitarbeiterdeutschland = 3237    # Wertzuweisung
+mitarbeiterdeutschland           # Ausgabe der Variable
+print(mitarbeiterdeutschland)    # Ausgabe der Variable
+#- Funktion [] fügt Variablen zu einer Liste zusammen 
+mitarbeiterholland = 259         # Wertzuweisung
+mitarbeiter = [mitarbeiterdeutschland, mitarbeiterholland]
+mitarbeiter                      # Ausgabe der Liste
+mitarbeiter[0]                   # Erstes Element der Liste (Index beginnt mit 0)
+mitarbeiter[1]                   # Zweites Element der Liste
+#- Anweisung über mehr als eine Zeile----------------------------------------------
+mitarbeiterinsgesamt = mitarbeiterdeutschland \
+                     + mitarbeiterholland
+mitarbeiterinsgesamt
+#- Mehrere Anweisungen in einer Zeile----------------------------------------------
+a = 1; b = 3; c = 59
+print(a,b,c)
+# If-Anweisung
+if c > 10:
+    print("Die Variable c ist größer als 10")
+```
+
+### 1.1 Übung Wertzuweisung
+
+Weisen Sie der Variablen x den Wert 3 zu und addieren Sie anschließend 18 hinzu. Lassen Sie sich anschließend den Wert von x anzeigen.
+
+Kommentare (nicht ausgeführtes Coding) wird in Python durch das #-Symbol eingeleitet.
+
+```{python 1_2, exercise=T, exercise.lines=3}
+```
+<div id="1_2-hint">
+**Hint:** Tippen Sie "x = 3, x = x + 18" und anschließend "print(x)", um den Wert zuzuweisen und das Ergebnis angezeigt zu bekommen.
+</div>
+
+## 2. Elementare Datentypen
+
+In vielen Programmiersprachen muss eine Variable durch die Zuweisung eines Namens und eines spezifischen Datentyps deklariert werden, bevor ihr ein Wert zugewiesen werden kann. In Python müssen Variablen nicht im Vorfeld deklariert werden, sondern sie werden in dem Augenblick der Wertzuweisung dynamisch erschaffen und Python bestimmt den Datentyp automatisch, sofern dieser nicht spezifisch angegeben wird. Bei Stringvariablen erfolgt die Zuweisung in Anführungszeichen, bei Zahlen ohne Anführungszeichen.
+
+Die wichtigsten elementaren Datentypen in Python sind: **Float (float)** sind Gleitkommazahlen, wobei das Dezimalkomma in Python standardmäßig durch einen Punkt ein- und ausgegeben wird. **Integer (int)** sind ganzzahlige Zahlenwerte und verbrauchen weniger Speicherplatz als der Typ Float.	**Boolean (bool)** sind logische Werte, welche True oder False sein können.	**String (str)** sind Zeichenketten bzw. Strings und werden entweder in einfache ' ' oder doppelte " " Anführungszeichen gesetzt.
+
+Nachdem eine Wertzuweisung an eine Variable erfolgt ist, kann die Funktion type() genutzt werden, um den von Python automatisch zugewiesenen Datentyp anzeigen zu lassen. 
+Die Funktion isinstance() erlaubt zu prüfen, ob eine Variable von einem spezifischen Datentyp ist, z.B. isinstance(a,int) überprüft, ob die Variable a vom Typ integer ist. Das Ergebnis dieser Funktionen ist TRUE, wenn die Variable von diesem Datentyp ist, ansonsten FALSE.
+
+Wenn der Datentyp konvertiert werden soll, so ist dies mit den Funktionen float(), int(), str(), list(), tuple() und set() möglich. Die vorgenannten Funktionen können auch genutzt werden, um neue, leere Objekte zu erzeugen, z.B. a=list() erzeugt eine leere Liste mit dem Namen a. Nur für Dictionaries ist eine einfache Konvertierung nicht möglich, da ja die Angabe von Schlüssel und Werten erforderlich wäre. Aus einem Dictionary kann man jedoch eine Liste, ein Tupel oder eine Menge erzeugen, in der dann jedoch nur die Schlüssel enthalten sind.
+
+### 2.1 Numerische Datentypen
+
+Die Ausgabe numerischer Variablen kann durch die Methode .format u.a. die Anzahl der Nachkommastellen festlegen, z.B. „Kosten von {:.3f} Euro und {:.4f} Euro".format(n1, 77.54321) erzeugt die Ausgabe 'Kosten von 10000.123 Euro und 77.5432 Euro', wenn n1 den Inhalt 10000.12345 hat.
+
+```{python 1_1_1, exercise=F}
+n1=10000.12345                   # Numerische Variable 
+n1                               # Variableninhalt
+print(n1)
+type(n1)                         # Datentyp
+isinstance(n1,int)               # Prüfung, ob Variable vom Typ Integer ist
+n2=int(n1)                       # Konvertierung zu Integer
+n2                               # Variableninhalt
+isinstance(n2,int)               # Prüfung, ob Variable vom Typ Integer ist
+n3=round(n1,2)                   # Runden auf 2 Nachkommastellen
+n3                               # Variableninhalt
+n1,n2,n3
+print(n1,n2,n3)
+print("n1:",n1,"n2:",n2,"n3:",n3)
+#  Formatierung von Zahlen für die Ausgabe mit .format 
+#    {} für Variablen, die sich in Klammer nach .format befinden
+#    :.xf für x Nachkommastellen
+"Kosten von {:.3f} Euro und {:.4f} Euro".format(n1, 77.54321)
+print("Kosten von {:.3f} Euro und {:.4f} Euro".format(n1, 77.54321))
+```
+
+### 2.2 Logische Datentypen
+
+Logische Variablen können die Werte True oder False annehmen. Die Logikprüfung  l1=2>3 erzeugt für l1 den Wert False.
+
+```{python 1_1_2, exercise=F}
+l1 = True                        # Boolsche Variable 
+l1                               # Inhalt
+type(l1)                         # Datentyp
+l2=n1<10                         # Logikprüfung
+print("n1<10 =",l2)
+l3=n1>10
+print("n1>10 =",l3)
+```
+
+### 2.3 String Datentypen
+
+Zeichenketten können in einfache oder doppelte Anführungszeichen gesetzt werden und besitzen in Python den Datentyp str. Wenn innerhalb einer Zeichenkette ein einfaches Hochkomma enthalten sein soll, so ist die Zeichenkette in doppelten Anführungszeichen einzuschließen. Wenn innerhalb einer Zeichenkette ein doppeltes Hochkomma enthalten sein soll, so ist die Zeichenkette in einfachen Anführungszeichen einzuschließen. Mehrzeilige Zeichenketten lassen sich in dreifachen Hochkomma einschließen. Zeichenketten mit einer Länge, die nicht in eine Editorzeile passen können mit Backslash (\) oder in Klammern aus mehreren Zeichenketten zusammengefügt werden. 
+
+Bevor eine Zeichenkette in eine Zahl umgewandelt wird bietet sich die Prüfung an, ob die Zeichenkette auch wirklich nur eine Zahl beinhaltet, was über die Methode .isdecimal() möglich ist. 
+
+```{python 1_1_3, exercise=F}
+s1='Erste Zeichenkette'          # String-Variable in einfachen Anführungszeichen
+s1                               # Inhalt
+type(s1)                         # Datentyp
+len(s1)                          # Länge des Strings
+s2="Machine Learning hilft"      # String-Variable in doppelten Anführungszeichen
+s2                               # Inhalt
+type(s2)                         # Datentyp
+len(s2)                          # Länge des Strings
+type(n2)                         # Datentyp
+#  Konvertierung von String Datentypen
+s3=str(n2)                       # Konvertierung von Zahl in String
+s3                               # Inhalt
+type(s3)                         # Datentyp
+len(s3)                          # Länge des Strings
+s4="23.80"                       # Zahl als String-Variable
+s4                               # Inhalt
+type(s4)                         # Datentyp
+n5=float(s4)                     # Konvertierung von String in Zahl (float)
+n5                               # Inhalt
+type(n5)                         # Datentyp
+#  Mehrzeilige String Datentypen
+s5 = """Diese Zeichenkette besteht aus mehreren Zeilen.
+Zeile-2
+Zeile-3"""
+s5                               # Inhalt zeigt Zeilumbrüche als \n an
+print(s5)                        # print() berücksichtigt  Zeilenumbrüche
+#                                # Zeilenumbruch mit  Backslash
+s6 = "Dies ist ein so extrem langer String, der nicht in den 80"\
+"Zeichen des Editors in eine Zeile passt!"
+print(s6)
+#                                # Zeilenumbruch mit Rundklammern
+s7 = ("Dies ist ein so extrem langer String, der nicht in den 80"
+"Zeichen des Editors in eine Zeile passt!")
+print(s7)
+print(s6 == s7)                  # Prüfung, ob Strings identisch sind = TRUE
+#  Logikprüfungen zu String Datentypen
+'Erste' in s1                    # Prüfung, ob 'Erste" in String enthalten ist
+'Zweite' in s1                   # Prüfung, ob 'Zweite" in String enthalten ist
+s1.isdecimal()                   # Logische Frage ob String nur Zahlen
+s3.isdecimal()                   # Logische Frage ob String nur Zahlen
+s8='Anführungszeichen bedeutend' # String-Variable in einfachen Anführungszeichen
+s8                               # Inhalt
+s9="Anführungszeichen bedeutend" # String-Variable in einfachen Anführungszeichen
+s9                               # Inhalt
+s8==s9                           # Prüfung, ob Strings identisch sind = TRUE
+s10='Er sagte "Ich lerne Python"'# String-Variable in einfachen Anführungszeichen
+s10                              # Inhalt
+s11="Er sagte 'Ich lerne Python'"# String-Variable in doppelten Anführungszeichen
+s11
+s10==s11                         # Prüfung, ob Strings identisch sind = FALSE
+```
+
+Erstellen Sie einen string mit dem Namen s12 und dem Inhalt "Ich teste folgende Anzahl an Zeichenketten:". Erstellen Sie einen zweiten String mit dem Namen s13 und dem Inhalt "870". Testen Sie, ob die beiden Strings nur aus Zahlen bestehen.
+Konvertieren Sie die Variable s13 in eine Integer-Zahl und speichern diese in der Variablen z13. Lassen Sie sich den Datentyp von s13 uns z13 anzeigen.
+
+```{python 1_1_3_1, exercise=TRUE, exercise.lines=3}
+```
+```{python 1_1_3_1-hint-1}
+s12 = "Ich teste folgende Anzahl an Zeichenketten:"
+s13 = "870"
+s12.isdecimal()                  # Logische Frage ob String nur Zahlen
+s13.isdecimal()                  # Logische Frage ob String nur Zahlen
+```
+```{python 1_1_3_1-hint-2}
+
+z13=int(s13)                     # Konvertierung von String in Zahl (float)
+type(s13)                        # Datentyp
+type(z13)                        # Datentyp
+```
+
+### 2.3.1 Methoden für Stringvariablen
+
+Mit den Operationen + bzw. =+ lassen sich Zeichenketten aneinanderfügen. Auch die Methode .join() erlaubt das Verketten von Zeichenketten. Die Methode .split() separiert die Worte einer Zeichenkette und erstellt eine Liste. Ein Suchen ist mit der Methode .find() und ein Suchen und Ersetzen mit der Methode .replace() möglich. 
+
+```{python 1_1_4, exercise=F}
+s1.upper()                       # Konvertierung in Grossbuchstaben
+s1.lower()                       # Konvertierung in Kleinbuchstaben
+s1+=" für heute"                 # Operation += fügt Strings zusammen
+s1
+#  Eine Zahl muss vor += mit \"str()\" in einen String konvertiert werden
+s1print=s1
+print(n4)
+#s1print+="ist die Zahl "+n4     # Fehlermeldung, da eine Zahl
+s1print+="ist die Zahl "+str(n4) # Keine Fehlermeldung, da String
+print(s1print)
+sliste = s1.split()              # Worttrennung von String
+sliste
+type(sliste)                     # Datentyp
+len(sliste)                      # Länge der Liste
+sjoined1="-".join(sliste)        # Zusammenfügen von Strings einer List
+sjoined1
+sjoined2="_".join(['Dies',"war","ein","Beispiel"])
+sjoined2
+sjoined2.find("Beispiel")        # Index des ersten Vorkommens
+sjoined2.find("heute")           # -1, wenn der String nicht vorkommt
+sreplaced=sjoined2.replace("Dies","Das") # Suchen/Ersetzen von String
+sreplaced
+```
+
+### 2.3.2 Zugriff auf Stringvariablen
+
+Der Zugriff auf Teile einer Zeichenkette ist über Index in eckigen Klammern möglich, wobei der Index 0 für das erste Zeichen einer Zeichenkette verwendet wird, z.B. s1[0] für die Variable s1. Auch ein Intervall von Zeichen einer Zeichenkette lässt sich über einen Von-Index und Bis-Index angeben, wobei ein Doppelpunkt die beiden Indizes voneinander trennt, z.B. s1[0:4], um die Zeichen 1 bis 3 der Variablen s1 anzuzeigen. Bei der Angabe von Intervallgrenzen ist die untere Intervallgrenze inkludiert, die obere Intervallgrenze jedoch exkludiert.
+
+```{python 1_1_5, exercise=F}
+s1
+s1[0]                            # Index 0 ist das erste Zeichen
+# Intervallangabe mit :
+# Untere Intervallgrenze x ist inkludiert, obere Intervallgrenze y ist exkludiert 
+# Dies entspricht der Intervallnotation [x,y)
+s1[0:4]                          # von Index bis Index-1
+s1[0:4] == s1[:4]                # von Indexangabe kann entfallen, wenn von Index 0
+s1[3:]                           # bis Indexangabe kann entfallen, wenn bis Ende
+s1 == s1[:]
+s1[::3]                          # jedes dritte Zeichen
+s1[2::3]                         # jedes Zweite ab Index 2
+s1[::-1]                         # jedes Zeichen von hinten beginnend
+```
+
+### 2.3.3 Übung Zugriff auf Variable
+
+Die folgenden Anweisungen wurden ausgeführt, um eine Liste der Klausurnoten von Klaus, Peter und Nadine zu erstellen.
+
+```{python 1_3-setup, echo=TRUE, exercise=FALSE}
+Klaus  = 1
+Peter  = 4 
+Nadine = 3
+klausurnoten = [Klaus, Peter, Nadine]
+```
+
+Lassen Sie sich das zweite und dritte Element der Liste "klausurnoten" anzeigen, so dass die 4 und 3 angezeigt werden sollten.
+
+```{python 1_3, exercise=TRUE, exercise.lines=3, exercise.setup="1_3-setup"}
+```
+```{python 1_3-hint-1}
+klausurnoten[1]
+klausurnoten[2]
+```
+
+## 3. Schleifen
+
+Schleifen haben den Vorteil, dass eine Reihe von Anweisungen mit Run Selected Line(s) im Menü bzw. der Tastenkombination Strg+Enter gemeinsam ausgeführt werden.
+
+```{python 2_1-setup, exercise=FALSE}
+Klaus  = 1
+Peter  = 4 
+Nadine = 3
+klausurnoten = [Klaus, Peter, Nadine]
+klausurnoten
+```
+```{python 2_1, exercise=F}
+#- For-Schleife---------------------------------------------------------------------
+for i in range(3):         # Erste 3
+    print(klausurnoten[i]) # Gibt Inhalt von klausurnoten mit Index i aus
+for i in range(0, 3, 1):   # Von 0 bis 3 mit Inkrement 1
+   print(klausurnoten[i])  # Gibt Inhalt von klausurnoten mit Index i aus
+```
+
+## 4. Funktionen
+
+Funktionsaufrufe sind daran erkennbar, dass nach dem Namen des Paketes, einem Punkt und dem Namen der Funktion Klammern folgen, in denen der Funktion ggfs. Parameter mitgegeben werden können, z.B. np.mean(mitarbeiter), um den Mittelwert für die Variable „mitarbeiter“ zu berechnen. 
+
+Python ist case-sensitiv, bei den Namen von Funktionen und Objekten wird also die Groß- und Kleinschreibung unterschieden, so dass np.mean(mitarbeiter) nur dann funktioniert, wenn es eine Funktion mean() in dem Paket numpy und auch ein Objekt mitarbeiter gibt, die beide keine Großbuchstaben beinhalten. Die Anweisung np.Mean(Mitarbeiter) würde eine Fehlermeldung verursachen wenn entweder die Funktion Mean() oder das Objekt Mitarbeiter nicht in dieser Kombination von Groß-/Kleinschreibung existieren.
+
+Die Hilfe zu einer Funktion lässt sich durch voranstellen eines Fragezeichens aufrufen, z.B. ?np.mean.
+
+```{python 3_1, exercise=F}
+import numpy as np               # Paket numpy importieren
+#- Funktionsaufruf-----------------------------------------------------------------
+np.mean(mitarbeiter)             # Funktion np.mean() berechnet den Mittelwert
+```
+
+### 4.1 Aufruf einer Funktion
+
+Rufen Sie die Funktion mean() auf und verwenden Sie als Parameter den Vektor klausurnoten. Als Ergebnis sollte 2,6 Periode angezeigt werden.
+
+```{python 3_2, exercise=TRUE, exercise.lines=3}
+```
+```{python 3_2-hint-1}
+np.mean(klausurnoten)            # Funktion np.mean() berechnet den Mittelwert
+```
+
+### 4.2 Definition einer Funktion
+
+Eine Funktion wird mit der Anweisung def definiert. Anschließend kann die Funktion aufgerufen werden.
+
+```{python 3_3, exercise=FALSE}
+def gruss(name):
+    return f"Hallo, {name}!"
+print(gruss("Anna"))
+```
+
+## 5. Import von Paket
+
+Funktionsaufrufe beziehen sich oft auf Funktionen, die in Paketen enthalten sind. Um ein Paket zu aktivieren wird die Anweisung import paketname verwendet. Um den Paketnamen nicht immer in voller Länge in Anweisungen angeben zu müssen, wird gerne mit Abkürzungen gearbeitet, die über den Parameter „as“ angegeben werden, z.B. import numpy as np. 
+
+Wenn nur einzelne Teilpakete, Funktionen, Klassen oder Daten aus einem Paket importiert werden sollen, ist dies mit der Anweisung "from paket import objekt" möglich. Dadurch wird kein unnötiger Platz im Arbeitsspeicher verschwendet. 
+
+Um einen Überblick aller Objekte eines Pakets zu erhalten ist es möglich den Paketnamen gefolgt von dem Punktoperator und der Tab-Taste einzugeben.
+
+```{python 4, exercise=F}
+#- Import von Paket----------------------------------------------------------------
+import numpy as np               # Paket numpy importieren
+from math import pi              # Objekt pi aus Paket math importieren
+pi
+```
+
+## 6. Quiz 
+
+```{r 5, echo = FALSE}
+quiz(
+  question("Welche der folgenden Aussagen sind korrekt?", allow_retry = TRUE, random_answer_order = TRUE,
+  answer("Wertzuweisungen erfolgen über den Zuweisungsoperator <-.", correct = FALSE, message = "Wertzuweisungen erfolgen durch ein =."),
+  answer("Listen werden in Python durch eckige Klammern [] erzeugt. Die Objekte der Liste werden in den eckigen Klammern durch Komma getrennt angegeben.", correct = TRUE),
+  answer("Kommentare beginnen in Python mit dem Anführungszeichen.", message = "Nein, das #-Zeichen stellt den Beginn eines Kommentars dar."),
+  answer("Funktionsaufrufe erfolgen durch die Angabe des Funktionsnamens gefolgt von ( und ). In den Klammern werden ggfs. Parameter an die Funktion übergeben.", correct = TRUE, message = "Ja, in Klammern können einer Funktion beliebig viele Parameter beliebigen Formats übergeben werden."),
+    type = "multiple"
+  ),
+  question("Welcher Operator wird für eine Wertzuweisung verwendet?",
+    answer("=", correct = TRUE),
+    answer("==", correct = FALSE)
+  ),
+  question("Welche Bibliothek wird für numerische Berechnungen importiert?",
+    answer("numpy", correct = TRUE),
+    answer("pandas", correct = FALSE)
+  ),
+  question("Welche Methode gibt die Länge eines Strings zurück?",
+    answer("len()", correct = TRUE),
+    answer("size()", correct = FALSE)
+  ),
+  question("Welche Datentypen gibt es in Python?",
+    answer("float, int, str, bool", correct = TRUE),
+    answer("array, table, numeric", correct = FALSE)
+  ),
+  question("Wie beginnt eine for-Schleife?",
+    answer("for i in range(5):", correct = TRUE),
+    answer("for i = 1 to 5", correct = FALSE)
+  ),
+  question("Wie wird eine Funktion in Python definiert?",
+    answer("mit 'def'", correct = TRUE),
+    answer("mit 'function'", correct = FALSE)
+  ),
+  question("Was gibt 'print(3 + 4 * 2)' aus?",
+    answer("11", correct = TRUE),
+    answer("14", correct = FALSE)
+  ),
+  question("Was macht 's.upper()' bei einem String s?",
+    answer("Wandelt alles in Großbuchstaben um", correct = TRUE),
+    answer("Löscht Leerzeichen", correct = FALSE)
+  ),
+  question("Wie importiert man die Bibliothek numpy?",
+    answer("import numpy as np", correct = TRUE),
+    answer("import np as numpy", correct = FALSE)
+  ),
+  question("Was ist der erste Index einer Liste in Python?",
+    answer("0", correct = TRUE),
+    answer("1", correct = FALSE),
+    answer("-1", correct = FALSE)
+  ),
+  question("Welcher Datentyp wird für Ganzzahlen verwendet?",
+    answer("int", correct = TRUE),
+    answer("float", correct = FALSE),
+    answer("str", correct = FALSE)
+  )
+)
+```
+
+## Ende 
+
+Gratulation!
+
+Sie haben dieses Tutorial erfolgreich ausgeführt und einen ersten Einblick in die Syntax der Programmiersprache Python erhalten.
